@@ -1,0 +1,932 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Voikko – Release notes</title>
+<link rel="stylesheet" type="text/css" href="stylesheets/styles.css" />
+</head>
+<body>
+
+<p class="linkback"><a href=".">← Back to Index</a></p>
+
+<h1>Voikko<br /><small>Release notes</small></h1>
+
+<p>Here you will find the release notes for different components of Voikko.
+These notes only mention notable changes between releases. Full changelogs
+for libvoikko, tmispell-voikko, openoffice.org-voikko and mozvoikko are available in
+the source packages, and for Suomi-malaga in the Subversion revision history.
+The releases are listed in reverse chronological order.</p>
+
+
+<h2>Libreoffice-voikko 3.4.1 (2013-07-22)</h2>
+<p>This version requires libvoikko 3.0 or later. It works with LibreOffice 3.6 and later.
+This release fixes a performance bug that affected mainly users of format 3 (ZHFST) spellers.
+Additionally support for some new spell checking languages has been added.</p>
+<p><strong>Note for LibreOffice 4.1:</strong> To build this or previous releases with
+the LibreOffice 4.1 SDK you need to apply <a href="https://github.com/voikko/libreoffice-voikko/commit/b7e100bea5bcea3549ac87cd96c95ee4833757b3">this patch</a>.
+A new release targeting LibreOffice 4.1 and later will be made later this year.</p>
+
+
+<h2>Suomi-malaga 1.14 (2013-07-22)</h2>
+<p>This version requires malaga 7.8 or later for building. For use with Voikko, libvoikko
+2.2 or later is needed. After version 1.13 the following notable changes
+have been made:</p>
+<ul>
+<li>New words have been added and various small bugs have been fixed.</li>
+<li>Experimental VFST morphology has been improved substantially.</li>
+</ul>
+
+
+<h2>Libvoikko 3.6 (2013-04-03)</h2>
+<p>This version requires Suomi-malaga 1.4 or later. Some features require Suomi-malaga 1.12
+or later. After version 3.5 the following notable changes have been made:</p>
+<ul>
+<li>New stable dictionary format 3 (ZHFST spellers). This feature is disabled
+by default and can be enabled with configure option <code>--enable-hfst</code>.
+Hfst-ospell (SVN revision 3149) is required and must be configured with all optional features
+enabled.
+<ul><li>Previous dictionary format 2 (Finnish Malaga dictionaries) continues to be supported,
+enabled by default and has no external dependencies.</li></ul></li>
+<li>New supported platform: Android.</li>
+<li>New supported build tools: Python 3, Clang 3.1.</li>
+<li>Improved Finnish word splitting suggestions.</li>
+<li>New experimental backend: simple VFST spellers.</li>
+<li>Many improvements in the experimental Finnish VFST analyzer.</li>
+</ul>
+
+
+<h2>Libreoffice-voikko 3.4 (2013-04-03)</h2>
+<p>This version requires libvoikko 3.0 or later. It works with LibreOffice 3.5 and later.
+Notable changes in this release:</p>
+<ul>
+<li>Added support for many new spell checking languages.</li>
+<li>The user interface is now mostly language neutral.</li>
+</ul>
+
+
+<h2>Suomi-malaga 1.13 (2013-02-21)</h2>
+<p>This version requires malaga 7.8 or later for building. For use with Voikko, libvoikko
+2.2 or later is needed. After version 1.12 the following notable changes
+have been made:</p>
+<ul>
+<li>New words (mostly names) have been added.</li>
+<li>Experimental VFST morphology has been improved substantially.</li>
+</ul>
+<p>Known issue: Building this release with non-default build option
+<code>GENLEX_OPTS="--style=dialect"</code> will fail. To use this option you need to apply
+these two patches from Git:
+<a href="https://github.com/voikko/corevoikko/commit/faa65b58f3c2228e0839a7dbdd401f5e2458155a">faa65b5</a>,
+<a href="https://github.com/voikko/corevoikko/commit/7337d8ea9924f280a5a7d953d2c8a01bf0b43207">7337d8e</a>.
+This bug has no effect on default or other common configurations and it will be fixed in the next release.</p>
+
+
+<h2>Libvoikko 3.5 (2012-06-25)</h2>
+<p>This version requires Suomi-malaga 1.4 or later. Some features require Suomi-malaga 1.12
+or later. After version 3.4.1 the following notable changes have been made:</p>
+<ul>
+<li>Better support for characters in cyrillic and Easter European alphabets</li>
+<li>Experimental VFST backend</li>
+<li>Core library and VFST backend available under GPL/LGPL/MPL tri-license</li>
+<li>Improved error models for Finnish spelling and OCR correction</li>
+<li>New and improved rules for Finnish grammar checking</li>
+</ul>
+
+
+<h2>Suomi-malaga 1.12 (2012-06-25)</h2>
+<p>This version requires malaga 7.8 or later for building. For use with Voikko, libvoikko
+2.2 or later is needed. After version 1.11 the following notable changes
+have been made:</p>
+<ul>
+<li>Significant number of names and other words have been added.</li>
+<li>WORDBASES attribute has been extended to include information about root words of
+derived parts in compound words.</li>
+<li>Preliminary experimental VFST morphology has been added.</li>
+<li>Added support for using Sukija specific words in conjunction with morphology for Voikko.</li>
+</ul>
+
+
+<h2>Suomi-malaga 1.11 (2012-03-18)</h2>
+<p>This version requires malaga 7.8 or later for building. For use with Voikko, libvoikko
+2.2 or later is needed. After version 1.10 the following notable changes have been made:</p>
+<ul>
+<li>Some unnecessary but formally valid inflected pronoun and verb forms have been removed to
+help detect real errors.</li>
+<li>Rules for word compounding have been restricted slightly.</li>
+<li>New words have been added.</li>
+<li>Some errors that caused false positives with grammar checker in libvoikko 3.4 and later
+have been fixed.</li>
+</ul>
+
+
+<h2>Libreoffice-voikko 3.3 (2012-01-28)</h2>
+<p>This version requires libvoikko 3.0 or later. It works with any version of LibreOffice and
+OpenOffice.org 3.0.1 or later. Notable changes in this release:</p>
+<ul>
+<li>New icon</li>
+<li>Show links for extended grammar checker help texts. Links are only shown in LibreOffice 3.5
+or later.</li>
+</ul>
+
+
+<h2>Libvoikko 3.4.1 (2012-01-28)</h2>
+<p>This version requires Suomi-malaga 1.4 or later. Some features require Suomi-malaga 1.10
+or later. This is a maintenance release that contains mostly build fixes for MSVC and
+GCC 4.7.</p>
+
+
+<h2>Mozvoikko 2.0.1 (2012-01-04)</h2>
+<p>This version requires libvoikko 3.0 or later. It is compatible with Firefox versions 4.0
+or later and Thunderbird 5.0 or later.</p>
+<p>This release fixes a bug that prevented changing spell checking language to anything else
+than Finnish in Firefox 9. Link to extension home page has also been updated.</p>
+
+
+<h2>Libvoikko 3.4 (2011-12-17)</h2>
+<p>This version requires Suomi-malaga 1.4 or later. Some features require Suomi-malaga 1.10
+or later. After version 3.3.1 the following notable changes have been made:</p>
+<ul>
+<li>A crash bug affecting grammar checker has been fixed.</li>
+<li>New grammar checker rule for missing verbs has been added.</li>
+</ul>
+
+
+<h2>Mozvoikko 2.0 (2011-10-10)</h2>
+<p>This version requires libvoikko 3.0 or later. It is compatible with Firefox versions 4.0 - 8.0
+and Thunderbird 5.0 - 8.0.</p>
+<p>Mozvoikko 2.0 is a complete rewrite of Mozvoikko
+in JavaScript. Binary version of libvoikko (shipped with the extension or installed
+as a part of the operating system) is still needed but Mozvoikko itself contains no
+C++ code and thus no longer needs to be compiled. It is expected that Mozvoikko 2.0
+will require fewer compatibility updates for new Firefox versions than Mozvoikko 1.x did.
+Future compatibility cannot be guaranteed and thus it is still assumed that
+distributors of this component test new Firefox versions as they are released and
+change the range of compatible versions accordingly.</p>
+
+
+<h2>Libvoikko 3.3.1 (2011-09-26)</h2>
+<p>This version requires Suomi-malaga 1.4 or later. Some features require Suomi-malaga 1.10
+or later.</p>
+<p>This is a bug fix release that fixes a crash seen in recent versions of Firefox.
+The bug was introduced in libvoikko 3.1. No separate bug fix release will be made for libvoikko
+3.1 or 3.2 but the <a href="http://voikko.svn.sourceforge.net/viewvc/voikko/trunk/libvoikko/src/spellchecker/FinnishSpellerTweaksWrapper.cpp?r1=3855&amp;r2=4015&amp;view=patch">patch</a>
+will apply to these versions as well.</p>
+
+
+<h2>Suomi-malaga 1.10 (2011-09-16)</h2>
+<p>This version requires malaga 7.8 or later for building. For use with Voikko, libvoikko
+2.2 or later is needed. After version 1.9 the following notable changes have been made:</p>
+<ul>
+<li>New words have been added. Most new words are either geographical names or special
+vocabulary for mathematics and physics.</li>
+<li>Many errors in morphological analysis have been fixed and new attributes are exported
+for use in libvoikko. Taking advantage of some of these features requires libvoikko 3.3
+or later.</li>
+<li>Improved handling of compound words containing foreign components.</li>
+</ul>
+
+
+<h2>Libvoikko 3.3 (2011-09-16)</h2>
+<p>This version requires Suomi-malaga 1.4 or later. Some features require Suomi-malaga 1.10
+or later. After version 3.2.1 the following notable changes have been made:</p>
+<ul>
+<li>C# and other .NET programming languages can now access full functionality of
+libvoikko through newly added object oriented wrapper library. The interface of the library
+is similar to previously released interfaces for Python and Java.</li>
+<li>Common Lisp interface to spell checking, hyphenation and word analysis functionality
+has been added.</li>
+<li>Finnish morphological analyzer has been extended to support new attributes.</li>
+</ul>
+
+
+<h2>Mozvoikko 1.10.0 (2011-06-26)</h2>
+<p>This version requires libvoikko 2.3 or later. Older versions of libvoikko can
+also be used if the library is installed as a part of operating system.
+This version is compatible with Firefox versions 3.0 - 5.0.
+After version 1.0.1 changes have been made to make the extension compatible with
+Firefox versions 4 and 5.</p>
+
+
+<h2>Libvoikko 3.2.1 (2011-05-21)</h2>
+<p>This version requires Suomi-malaga 1.4 or later. Some features require Suomi-malaga 1.8
+or later.</p>
+<p>Version 3.2.1 is a bug fix release. It fixes handling of embedded null characters
+in input strings entered through Python or Java interfaces. The bug could be used to
+cause denial of service conditions and possibly other problems. Users of these interfaces
+are recommended to upgrade to this release. Applications that use the native C++ library
+directly (this includes all well known desktop applications) are not affected by this bug
+and no changes to the native library have been made in this release.</p>
+
+
+<h2>Suomi-malaga 1.9 (2011-04-22)</h2>
+<p>This version requires malaga 7.8 or later for building. For use with Voikko, libvoikko
+2.2 or later is needed. After version 1.8 the following notable changes have been made:</p>
+<ul>
+<li>Bug fixes and new features for morphological analysis</li>
+<li>Better support for geographical names</li>
+</ul>
+
+
+<h2>Libvoikko 3.2 (2011-03-24)</h2>
+<p>This version requires Suomi-malaga 1.4 or later. Some features require Suomi-malaga 1.8
+or later. After version 3.1 the following notable changes have been made:</p>
+<ul>
+<li>All functionality of the library is now accessible through Java API.</li>
+<li>Soft hyphens are accepted in Finnish spell checker as long as they are placed in a valid hyphenation point.</li>
+<li>Handling of punctuation and http URLs in tokenizer has been improved.</li>
+<li>New configure options --disable-testtools and --disable-extdicts have been added.</li>
+</ul>
+
+
+<h2>Libreoffice-voikko 3.2 (2011-02-18)</h2>
+<p>This version requires libvoikko 3.0 or later. It works with any version of LibreOffice and
+OpenOffice.org 3.0.1 or later. Notable changes in this release:</p>
+<ul>
+<li>The software has been renamed from openoffice.org-voikko to libreoffice-voikko. The new
+name is more convenient for most of our distributors who now target LibreOffice instead of
+OpenOffice.org. The extension still works with both office suites.</li>
+<li>"Ignore all" works for individual grammar checker rules in Spelling and Grammar dialog.</li>
+<li>Spell checking is supported for up to 74 different languages. The actual number depends on
+how libvoikko has been configured and which morphologies  are available.</li>
+</ul>
+
+
+<h2>Libvoikko 3.1 (2010-11-19)</h2>
+<p>This version requires Suomi-malaga 1.4 or later. Some features require Suomi-malaga 1.8
+or later. After version 3.0 the following notable changes have been made:</p>
+<ul>
+<li>New and improved checks in Finnish spelling and grammar checkers.</li>
+<li>API and command line option for retrieving version numbers for libvoikko and test tools.</li>
+<li>Improved experimental support for languages other than Finnish.</li>
+</ul>
+
+
+<h2>Suomi-malaga 1.8 (2010-11-19)</h2>
+<p>This version requires malaga 7.8 or later for building. For use with Voikko, libvoikko
+2.2 or later is needed. After version 1.7 the following notable changes have been made:</p>
+<ul>
+<li>New attributes are exported for some words to support new spelling and grammar checking
+features in libvoikko 3.1.</li>
+<li>Better support for inflected numerals, especially Roman numerals.</li>
+<li>New words have been added.</li>
+</ul>
+
+
+<h2>Suomi-malaga 1.7 (2010-09-16)</h2>
+<p>This version requires malaga 7.8 or later for building. For use with Voikko, libvoikko
+2.2 or later is needed. After version 1.6 the following notable changes have been made:</p>
+<ul>
+<li>New words have been added, especially from medical field.</li>
+<li>Internal data structures have been optimized to reduce memory footprint by 10&nbsp;% and
+increase lookup performance by about 4&nbsp;%.</li>
+</ul>
+
+
+<h2>Openoffice.org-voikko 3.1.2 (2010-08-05)</h2>
+<p>This version requires libvoikko 2.1 or later, and OpenOffice.org 3.0.1
+or later. This release contains a fix for a bug that prevents
+OpenOffice.org 3.3 from starting up if a previous version of this
+extension is installed. Additionally this release supports the license
+dialog bypass feature of unopkg in OpenOffice.org 3.3.</p>
+
+
+<h2>Libvoikko 3.0 (2010-05-27)</h2>
+<p>This version requires Suomi-malaga 1.4 or later. After version 2.3.1
+the following notable changes have been made:</p>
+
+<ul>
+<li>New thread safe API has been added that allows unlimited number of
+dictionaries to be opened and used simultaneously. In order to maintain
+compatibility with previous versions the old API is still available.
+It is now possible to open up to four dictionaries using the old API but
+this is not completely thread safe and therefore not recommended. Defining
+macro VOIKKO_NO_DEPRECATED_API before including voikko.h disables
+most of the old API and can be used to help porting the applications to
+the new API. The macro should not be used in released software.</li>
+<li>BCP 47 language tags are used to identify languages and language
+variants in the new API. Only Finnish (with variants) is supported in
+this release but many changes have been made that will eventually allow
+adding support for other languages.</li>
+<li>Experimental Lttoolbox backend has been added and HFST backend has
+been improved.</li>
+<li>Hyphenator and spelling suggestion code has been reworked to support
+alternative implementations.</li>
+<li>Option VOIKKO_OPT_IGNORE_NUMBERS no longer affect spelling suggestions,
+just spell checking.</li>
+<li>Deprecated option VOIKKO_OPT_ENCODING is now ignored. It never worked
+consistently across different platforms and names of acceptable encodings
+were not documented. UTF-8 is now the only supported narrow character
+string encoding. With this change dependency on iconv has been removed.</li>
+<li>Option VOIKKO_INTERSECT_COMPOUND_LEVEL is now ignored since implementing
+it in alternative hyphenators would have been unreasonably difficult. The
+option was not known to be used in any application and ignoring it does
+not affect hyphenation results in a significant way.</li>
+<li>Various improvements have been made in grammar checker. Most notably
+number of false positives from capitalization checks should be reduced.</li>
+<li>Testing tools have been improved. On platforms that support Posix threads
+voikkospell can take advantage of multiple CPU cores to significantly
+improve processing times for large lists of input words.</li>
+</ul>
+
+
+<h2>Suomi-malaga 1.6 (2010-05-16)</h2>
+<p>This version requires malaga 7.8 or later for building. For use with Voikko, libvoikko
+2.2 or later is needed. After version 1.5 the following notable changes have been made:</p>
+<ul>
+<li>New words have been added, especially from medical field.</li>
+<li>Certain previously rejected rare numerals and proper nouns are now accepted.</li>
+</ul>
+
+
+<h2>Openoffice.org-voikko 3.1.1 (2010-03-27)</h2>
+<p>This version requires libvoikko 2.1 or later, and OpenOffice.org 3.0.1
+or later. This is a maintenance release containing mostly portability
+fixes.</p>
+
+
+<h2>Libvoikko 2.3.1 (2010-02-17)</h2>
+<p>This version requires Suomi-malaga 1.4. Version 2.3.1 contains fixes for
+bugs found in version 2.3.</p>
+
+
+<h2>Mozvoikko 1.0.1 (2010-02-17)</h2>
+<p>This version requires libvoikko 2.3 or later. Older versions of libvoikko can
+also be used if the library is installed as a part of operating system.
+This version is compatible with Firefox versions 3.0 - 3.6.
+After version 0.9.6 changes have been made to make the extension compatible with
+Firefox 3.6, OS X/PPC and GNU/kFreeBSD.</p>
+
+
+<h2>Libvoikko 2.3 (2010-02-08)</h2>
+<p>This version requires Suomi-malaga 1.4. After version 2.2.2
+the following notable changes have been made:</p>
+
+<ul>
+<li>Dependency on glib has been removed.</li>
+<li>Malaga implementation has been optimized.</li>
+<li>More detailed results from morphological analysis (requires Suomi-malaga 1.5)</li>
+<li>Support for Python 3 has been added.</li>
+<li>Whitespace characters are no longer accepted at the start or end of the word.</li>
+<li>Various small bug fixes in grammar checking, morphological analysis and Python API.</li>
+</ul>
+
+
+<h2>Suomi-malaga 1.5 (2010-01-27)</h2>
+<p>This version requires malaga 7.8 or later for building. For use with Voikko, libvoikko
+2.2 or later is needed. After version 1.4 the following notable changes have been made:</p>
+<ul>
+<li>New attributes are exported for morphological analysis.</li>
+<li>Some rarely occurring bugs have been found and fixed by comparing the accepted
+set of words with words accepted by Omorfi.</li>
+<li>New words have been added, especially from medical field.</li>
+</ul>
+
+
+<h2>Libvoikko 2.2.2 (2009-11-04)</h2>
+<p>This version requires Suomi-malaga 1.4. Version 2.2.2 fixes a crash
+found in version 2.2.1 that can occur when the APIs that use wchar_t
+strings as arguments are used.</p>
+
+
+<h2>Libvoikko 2.2.1 (2009-10-08)</h2>
+<p>This version requires Suomi-malaga 1.4. Version 2.2.1 fixes some
+bugs found in version 2.2 and improves compatibility with Windows.</p>
+
+
+<h2>Libvoikko 2.2 (2009-09-30)</h2>
+<p>This version requires Suomi-malaga 1.4. After version 2.1
+the following notable changes have been made:</p>
+
+<ul>
+<li>Libvoikko now includes an simplified implementation of Malaga. The
+Malaga library is no longer needed for building or running libvoikko.
+Glib, which was previously indirectly used through Malaga, is now used
+directly and thus still required. This change was done to fix symbol name
+clashes between libmalaga and applications that were linked with libvoikko.</li>
+<li>Spell checking and hyphenation operations are about 15&nbsp;% faster than
+with libvoikko 2.1.</li>
+<li>Logic for generating spelling suggestions has been improved. Suggestions that
+were previously not found can now be found and ordering of the returned suggestions
+is calculated more intelligently.</li>
+<li>API has been added for morphological analysis. Analysis results are returned as
+sets of key-value pairs. The set of keys and the format of corresponding values may
+change in the future releases. Currently some features such as the base form of the
+word are available only if debug version of Suomi-malaga is used.</li>
+<li>Python bindings have been added. The bindings work with Python 2.5 or later (not with Python 3.x).
+The underlying implementation uses ctypes module and therefore no native code is
+needed in addition to the platform dependent libvoikko library. The interface offered
+by libvoikko Python module is much easier to use than the corresponding C library
+interface.</li>
+<li>Additionally small bug fixes and improvements have been made in various parts of
+the library.</li>
+</ul>
+
+
+<h2>Suomi-malaga 1.4 (2009-09-30)</h2>
+<p>This version requires malaga 7.8 or later for building. For use with Voikko, libvoikko
+2.2 or later is needed. After version 1.3 the following notable changes have been made:</p>
+
+<ul>
+<li>Dictionary data structures have been compacted, leading to about 10&nbsp;% smaller
+runtime files for Voikko.</li>
+<li>Dictionary format has been changed for Voikko. The new format exports more information
+about the morphology of analyzed words. The format is not compatilble with libvoikko 2.1
+or earlier.</li>
+<li>More words have been added and some bugs have been fixed.</li>
+</ul>
+
+
+<h2>Openoffice.org-voikko 3.1 (2009-04-28)</h2>
+<p>This version requires libvoikko 2.1 or later, and OpenOffice.org 3.0.1
+or later. After version 3.0 the following notable changes have been made:</p>
+
+<ul>
+<li>Grammar checker is now enabled by default.</li>
+<li>Option for specifying whether unknown words should be hyphenated has
+been added.</li>
+<li>Vocabulary variant can now be selected from the options dialog.</li>
+</ul>
+
+<p>Known issues in this release:</p>
+<ul>
+<li>Grammar checker does not work on Windows and should be disabled when
+building on that platform.</li>
+</ul>
+
+
+<h2>Mozvoikko 1.0 (2009-04-28)</h2>
+<p>This version requires libvoikko 1.7 or later. Older
+versions of libvoikko can also be used, but quality of spell checking
+will be reduced. This version is compatible with Firefox versions 3.0 - 3.5.
+After version 0.9.6 changes have been made to make the extension compatible with
+OS X and future versions of Mozilla products.</p>
+
+
+<h2>Libvoikko 2.1 (2009-04-28)</h2>
+<p>This version requires malaga 7.8 or later and Suomi-malaga 1.3.
+Suomi-malaga versions 0.7.3 - 1.2 may also be used, but performance and
+quality of grammar checking will be significantly worse. After version 2.0
+the following notable changes have been made:</p>
+
+<ul>
+<li>Internal implementation language has been changed from C to C++.
+This should not affect the users of the library, since exported interface
+continues to use C ABI.</li>
+<li>Ability to specify non-default dictionary variant and list available
+dictionary variants has been added.</li>
+<li>Directory layout for linguistic resources has been changed. The new
+layout allows multiple dictionary variants and versions to be installed
+simultaneously.</li>
+<li>New option VOIKKO_OPT_HYPHENATE_UNKNOWN_WORDS has been added to allow
+controlling whether words that are not recognised in morphological analysis
+should be hyphenated.</li>
+<li>New options VOIKKO_OPT_ACCEPT_UNFINISHED_PARAGRAPHS_IN_GC and
+VOIKKO_OPT_ACCEPT_BULLETED_LISTS_IN_GC have been added. They can be used to
+relax grammar checking rules in situations that commonly occur in word
+processing applications.</li>
+<li>Many improvements and bug fixes have been made in the grammar checker
+implementation.</li>
+</ul>
+
+
+<h2>Suomi-malaga 1.3 (2009-03-05)</h2>
+<p>This version requires malaga 7.8 or later. For use with Voikko, libvoikko
+1.2&nbsp;-&nbsp;2.1 is needed. After version 1.2 the following notable changes have been made:</p>
+
+<ul>
+<li>New words have been added, especially from medical field.</li>
+<li>Many changes in Sukija.</li>
+<li>Some bugs related to compound words have been fixed, leading to better
+spelling suggestions and more accurate hyphenation.</li>
+<li>Significant improvements related to grammar checking.</li>
+</ul>
+
+
+<h2>Mozvoikko 0.9.6 (2009-02-18)</h2>
+<p>This version requires libvoikko 1.7 or later. Older
+versions of libvoikko can also be used, but quality of spell checking
+will be reduced. After version 0.9.5 changes have been made to
+make the extension build and install out of the box on certain Linux
+distributions and with Firefox versions 3.0.x and 3.1.</p>
+
+
+<h2>Tmispell-voikko 0.7.1 (2009-02-10)</h2>
+<p>This version requires libvoikko 1.5 or later, and Enchant 1.1.6 – 1.3
+for Enchant support. After version 0.7 the following changes have been
+made:</p>
+
+
+<ul>
+<li>Fix to allow building with GCC 4.4.</li>
+<li>Fix to allow a combination of tmispell and libvoikko to run even if they
+have been built with different compilers.</li>
+<li>Document the fact that tmispell-voikko is now deprecated and should be
+replaced with Enchant where possible.</li>
+</ul>
+
+<p>Please note that source code for Enchant 1.4 (released on 2008-03-31) and
+later contains updated provider plugin for Voikko. If you have such
+version, you must use configure option <kbd>--disable-enchant</kbd> when building
+tmispell-voikko. The version of Enchant provider plugin shipped with
+tmispell-voikko is provided only for compatibility with earlier
+versions of Enchant.</p>
+
+
+<h2>Openoffice.org-voikko 3.0.1 (2009-01-19)</h2>
+<p>This version requires libvoikko 2.0 or later, and OpenOffice.org 3.0.1
+or later. This release is compatible with the new grammar checker API in
+OpenOffice.org 3.0.1. No other changes have been made compared to version 3.0.
+Those using OpenOffice.org 3.0 should not upgrade to this release but use
+openoffice.org-voikko 3.0 instead.</p>
+
+
+<h2>Suomi-malaga 1.2 (2008-10-02)</h2>
+<p>This version requires malaga 7.8 or later. For use with Voikko, libvoikko
+1.2 or later is needed. After version 1.1 the following notable changes have been made:</p>
+
+<ul>
+<li>New words have been added.</li>
+<li>Many changes in Sukija.</li>
+<li>Build system for Voikko has been extended to help creating custom
+vocabularies more easily.</li>
+</ul>
+
+
+<h2>Openoffice.org-voikko 3.0 (2008-08-28)</h2>
+<p>This version requires libvoikko 2.0 or later, and OpenOffice.org 3.0.
+After version 2.2 the following notable changes have been made:</p>
+
+<ul>
+<li>Grammar checker has been added, but it is disabled by default since it
+is not yet good enough for production use. See Makefile for option that
+allows it to be enabled during the build.</li>
+<li>Options dialog and an option for adjusting compound word hyphenation
+has been added.</li>
+<li>Adapt to the various build system changes in OpenOffice.org 3.0 on
+Linux, OS X and Windows.</li>
+<li>License has been changed to GPL 3 or later, since GPL 2 is no longer
+useful after OpenOffice.org switched to LGPL 3.</li>
+</ul>
+
+
+<h2>Libvoikko 2.0 (2008-08-28)</h2>
+<p>This version requires malaga 7.8 or later and Suomi-malaga 0.7.3 or later
+(1.0 or later is recommended for optimal performance). After version 1.7
+the following notable changes have been made:</p>
+
+<ul>
+<li>New API for identifying sentences from text paragraphs.</li>
+<li>New API for paragraph based grammar checking.</li>
+<li>New test program <span class="progname">voikkogc</span> for testing
+grammar checker and related functionality.</li>
+<li>Option VOIKKO_OPT_ENCODING has been deprecated. It will be removed in
+an API breaking release in the future. The default encoding (UTF-8) will
+become the only one available when using "char *" APIs of the library.</li>
+</ul>
+
+
+<h2>Mozvoikko 0.9.5 (2008-06-18)</h2>
+<p>Initial release. This version requires libvoikko 1.7 or later. Older
+versions of libvoikko can also be used, but quality of spell checking
+will be reduced.</p>
+<p>When built inside Mozilla source tree, configuration variables in
+mozvoikko.config should be adjusted to make the extension compatible with
+bugfix releases of Firefox. The extension will work with Firefox versions 3.0.x
+after this change has been made.</p>
+
+
+<h2>Libvoikko 1.7 (2008-05-24)</h2>
+<p>This version requires malaga 7.8 or later and Suomi-malaga 0.7.3 or later
+(1.0 or later is recommended for optimal performance). After version 1.6
+some bug fixes and the following new features have been added:</p>
+
+<ul>
+<li>New option VOIKKO_OPT_ACCEPT_EXTRA_HYPHENS to accept hyphens in some
+places where they would normally not be allowed. The exact behaviour of
+this option is not specified and may change in future releases.</li>
+<li>New option VOIKKO_OPT_ACCEPT_MISSING_HYPHENS to accept a word even if
+a required hyphen is missing at the start or end of the word. This is useful
+for applications that tokenise text using (mainly English) convention of treating
+hyphens as non-word characters.</li>
+<li>Search space for spelling suggestions has been extended by 40 %.</li>
+</ul>
+
+
+<h2>Suomi-malaga 1.1 (2008-04-28)</h2>
+<p>This version requires malaga 7.8 or later. For use with Voikko, libvoikko
+1.2 or later is needed. Changes after version 1.0 consist mainly of new
+words added to the vocabulary and various changes to Sukija.</p>
+
+
+<h2>Openoffice.org-voikko 2.2 (2008-02-17)</h2>
+<p>This version requires libvoikko 1.5 or later, and OpenOffice.org version 2.0.4
+- 2.4.1. After version 2.1 support for OS X 10.5 has been added and
+compatibility with Windows, Fedora and OpenOffice.org 2.4 has been improved.</p>
+
+
+<h2>Tmispell-voikko 0.7 (2008-02-17)</h2>
+<p>This version requires libvoikko 1.0 or later, and Enchant 1.1.6 – 1.3
+for Enchant support. After version 0.6.3 the following changes have been
+made:</p>
+
+<ul>
+<li>In order to conform to typical Linux distribution packaging guidelines,
+glibmm sources have been removed from the source package
+and replaced with dependency on system glibmm.</li>
+<li>Dependency on ncurses has been replaced with dependency on ncursesw.
+This substantially improves the curses based user interface in UTF-8 locales.</li>
+</ul>
+
+<p>Please note that source code for Enchant 1.4 (released on 2008-03-31) and
+later contains updated provider plugin for Voikko. If you have such
+version, you must use configure option <kbd>--disable-enchant</kbd> when building
+tmispell-voikko. The version of Enchant provider plugin shipped with
+tmispell-voikko is deprecated and provided only for compatibility with earlier
+versions of Enchant.</p>
+
+<h2>Suomi-malaga 1.0 (2008-01-10)</h2>
+<p>This version requires malaga 7.8 or later. For use with Voikko, libvoikko
+1.2 or later is needed. After version 0.7.7 the following changes have been
+made:</p>
+
+<ul>
+<li>The Voikko specific branch 0.7.x has been discontinued. This combined version
+supports both Voikko and Sukija (although Sukija is not yet usable in this release),
+and contains the latest vocabulary and morphology for both applications.</li>
+<li>New build option MIN_FREQUENCY to control vocabulary size for Voikko.</li>
+<li>Some small fixes and improvements.</li>
+</ul>
+
+
+<h2>Suomi-malaga 0.7.7 (2007-12-04)</h2>
+<p>This version requires malaga 7.8 or later and libvoikko 1.2 or later. After
+version 0.7.6 the following new features and bug fixes have been added:</p>
+
+<ul>
+<li>New words have been added</li>
+<li>Common types of numerals are accepted even when written as numbers</li>
+<li>Disk space and memory use have been reduced by over 10 %</li>
+<li>Better analysis speed for correct words</li>
+<li>Many bugs have been fixed.</li>
+</ul>
+
+
+<h2>Libvoikko 1.6 (2007-12-04)</h2>
+<p>This version requires malaga 7.8 or later and Suomi-malaga 0.7.3 or later. After
+version 1.5 the following new features and bug fixes have been added:</p>
+
+<ul>
+<li>Spelling suggestions for numerals in Suomi-malaga 0.7.7</li>
+<li>Most email addresses and some URLs are filtered out by default
+during spell checking</li>
+<li>Ability to use environment variable VOIKKO_DICTIONARY_PATH to specify the
+dictionary path</li>
+<li>String tokenizer functions have been added. These can be used
+to find word boundaries from running text for spell checking and hyphenation.</li>
+</ul>
+
+
+<h2>Tmispell-voikko 0.6.3 (2007-11-17)</h2>
+<p>This version requires libvoikko 1.0 or later, and Enchant 1.1.6 or later
+for Enchant support. This release contains build fixes for upcoming GCC 4.3
+and some minor cleanups.</p>
+
+
+<h2>Suomi-malaga 0.7.6 (2007-08-31)</h2>
+<p>This version requires malaga 7.8 or later and libvoikko 1.2 or later. After
+version 0.7.5 the following new features and bug fixes have been added:</p>
+
+<ul>
+<li>Stricter compounding rules for verbs and nouns derived from verbs</li>
+<li>Unnecessary prefixes have been removed</li>
+<li>New words have been added</li>
+<li>Better analysis speed for correct and incorrect words</li>
+<li>Many bugs have been fixed.</li>
+</ul>
+
+
+<h2>Openoffice.org-voikko 2.1 (2007-08-25)</h2>
+<p>This version requires libvoikko 1.5 or later, and OpenOffice.org 2.0.4
+or later. After version 2.0.1 the following notable changes have been made:</p>
+
+<ul>
+<li>Support for Windows has been added</li>
+<li>Support for building a standalone extension (including showing the
+license during extension installation) has been added.</li>
+</ul>
+
+
+<h2>Libvoikko 1.5 (2007-08-20)</h2>
+<p>This version requires malaga 7.8 or later and Suomi-malaga 0.7.3 or later. After
+version 1.4.1 the following new features and bug fixes have been added:</p>
+
+<ul>
+<li>Porting fixes, especially for Windows</li>
+<li>Improvements in spelling suggestions and voikkospell.</li>
+</ul>
+
+
+<h2>Tmispell-voikko 0.6.2 (2007-05-23)</h2>
+<p>This version requires libvoikko 1.0 or later, and Enchant 1.1.6 or later
+for Enchant support. Changes after version 0.6.1 include, among other things,
+improvements to the Enchant plugin taken from Enchant CVS. These changes
+allow the use of Enchant plugin with some applications that have recently
+been ported to use Enchant for spell checking (most notably Gedit).</p>
+
+
+<h2>Suomi-malaga 0.7.5 (2007-05-15)</h2>
+<p>This version requires malaga 7.8 or later and libvoikko 1.2 or later. After
+version 0.7.4 the following new features and bug fixes have been added:</p>
+
+<ul>
+<li>Some incorrect words, and many words that were considered unsuitable for
+written language have been removed</li>
+<li>Some words have been moved to different inflection classes to
+match modern written Finnish</li>
+<li>New words have been added</li>
+<li>Better analysis speed for correct and incorrect words</li>
+<li>Smaller size of the binary lexicon file</li>
+<li>Many bugs have been fixed</li>
+<li>Build system has been rewritten. Application independent XML format
+is now used for original word lists.</li>
+</ul>
+
+
+<h2>Openoffice.org-voikko 2.0.1 (2007-05-15)</h2>
+<p>This release fixes some bugs found in version 2.0. For compatibility
+requirements, see the release notes for version 2.0.</p>
+
+
+<h2>Libvoikko 1.4.1 (2007-05-15)</h2>
+<p>This release contains small improvements to hyphenation rules. For compatibility
+requirements, see the release notes for version 1.4.</p>
+
+
+<h2>Openoffice.org-voikko 2.0 (2007-04-30)</h2>
+<p>This version requires libvoikko 1.0 or later, and OpenOffice.org 2.0.4
+or later. After version 1.2 the code has been mostly rewritten.
+The following notable changes have been made:</p>
+
+<ul>
+<li>Hyphenation settings of OpenOffice.org are now respected. Each paragraph
+may use different settings.</li>
+<li>Extension is now packed using the new .oxt format.</li>
+<li>The license has been switched to the GPL.</li>
+</ul>
+
+
+<h2>Libvoikko 1.4 (2007-04-30)</h2>
+<p>This version requires malaga 7.8 or later and Suomi-malaga 0.7.3 or later. After
+version 1.3.1 the following new features and bug fixes have been added:</p>
+
+<ul>
+<li>New command line options for voikkospell</li>
+<li>Better spelling suggestions for OCR applications</li>
+<li>Improved hyphenation of words with certain special characters</li>
+<li>Fixed option VOIKKO_INTERSECT_COMPOUND_LEVEL.</li>
+</ul>
+
+
+<h2>Suomi-malaga 0.7.4 (2007-02-15)</h2>
+<p>This version requires malaga 7.8 or later and libvoikko 1.2, 1.3 or 1.4. After
+version 0.7.3 the following new features and bug fixes have been added:</p>
+
+<ul>
+<li>Some incorrect words, and many words that were considered unsuitable for
+written language have been removed</li>
+<li>Adverbs are no longer generally allowed in compound words</li>
+<li>Compound numerals are now accepted, but compounding numerals with other
+  nouns is no longer freely allowed</li>
+<li>New words have been added</li>
+<li>Correct words are analysed faster than in the previous version</li>
+<li>Many bugs have been fixed.</li>
+</ul>
+
+
+<h2>Libvoikko 1.3.1 (2007-02-12)</h2>
+<p>This release fixes a regression in version 1.3 related to spelling suggestions
+for words starting with capital letter. For compatibility requirements, see the release
+notes for version 1.3.</p>
+
+
+<h2>Libvoikko 1.3 (2007-02-05)</h2>
+<p>This version requires malaga 7.8 or later and Suomi-malaga 0.7.3 or 0.7.4. After
+version 1.2 the following new features and bug fixes have been added:</p>
+
+<ul>
+<li>Full support for Windows, including the use of registry keys to specify the default
+  location for Suomi-malaga project files</li>
+<li>Slightly improved spelling suggestions, including a new optional mode for use with
+  OCR applications</li>
+<li>Certain uses of disambiguating or optional hyphens are no longer rejected in spell
+  checking</li>
+<li>Hyphenator now detects more syllable breaks when VOIKKO_OPT_NO_UGLY_HYPHENATION=0</li>
+<li>New hyphenator option VOIKKO_MIN_HYPHENATED_WORD_LENGTH to limit the length of the
+  words to be hyphenated, including the length of the components of a compound word</li>
+<li>Fixes for character case check and hyphenation for words containing punctuation.</li>
+</ul>
+
+
+<hr />
+<p>In 2006 we made simultaneous releases of all the components of Voikko. The
+Finnish release notes from that period are available below.</p>
+
+<div class="suomi" lang="fi" xml:lang="fi">
+<h2>Versio 1.2</h2>
+<p>Versio 1.2 julkaistiin 15.11.2006, ja se koostuu seuraavista komponenteista:</p>
+<ul>
+<li>libvoikko 1.2</li>
+<li>Suomi-malaga 0.7.3 (”Voikko edition”)</li>
+<li>openoffice.org-voikko 1.2</li>
+<li>tmispell-voikko 0.6.1.</li>
+</ul>
+<p>Tämä versio vaatii toimiakseen malagan version 7.8 tai uudemman.</p>
+
+<h3>Käyttäjän kannalta merkittävät muutokset</h3>
+<ul>
+<li>Vierasperäisten sanojen, yhdyssanojen ja tiettyjen poikkeavasti tavuttuvien sanojen tavutusta
+on parannettu.</li>
+<li>Isojen kirjainten käyttöä on tarkennettu ja korjailtu.</li>
+<li>Tunnistettavaa nimistöä on laajennettu: lähes kaikki Suomen kunnat sekä monet aikaisemmin
+tunnistamatta jääneet yleiset etu- ja sukunimet tunnistuvat oikein.</li>
+<li>Etuliitteiden ja lyhyiden nominien käyttöä yhdyssanoissa on rajoitettu, minkä johdosta
+vääriä korjausehdotuksia annetaan vähemmän ja väärin kirjoitettujen sanojen havaitseminen
+helpottuu.</li>
+<li>Joitakin virheellisiä ja murteellisia taivutusmuotoja ei enää hyväksytä.</li>
+<li>Sanastoon on lisätty sanoja ja virheellisiä sanoja on poistettu.</li>
+<li>Tmispell-voikko toimii KDE:ssa myös käyttäjillä, joiden oletusmerkistö on jokin muu kuin 
+UTF-8.</li>
+<li>Libvoikko tarkistaa käytettävän Suomi-malagan version ja kieltäytyy käyttämästä
+epäyhteensopivaa versiota.</li>
+<li>Oo2-voikon nimi on vaihdettu openoffice.org-voikoksi vastaamaan Linux-jakeluiden
+yleistä käytäntöä.</li>
+</ul>
+
+<h3>Ohjelmistonkehittäjien ja tehokäyttäjien kannalta merkittävät muutokset</h3>
+<ul>
+<li>Libvoikko sallii sovelluskohtaisen sanastohakemiston määrittämisen alustusfunktion
+voikko_init_with_path avulla.</li>
+<li>Suomi-malagassa on alustava tuki hyväksyttävien taivutusmuotojen hienosäädölle ja
+omien lisäsanastojen käytölle.</li>
+</ul>
+
+<h2>Versio 1.1</h2>
+<p>Versio 1.1 julkaistiin 14.9.2006, ja se koostuu seuraavista komponenteista:</p>
+<ul>
+<li>libvoikko 1.1</li>
+<li>Suomi-malaga 0.7.2 (”Voikko edition”)</li>
+<li>Oo2-voikko 1.1</li>
+<li>tmispell-voikko 0.6.</li>
+</ul>
+<p>Tämä versio vaatii toimiakseen malagan version 7.4 tai uudemman.</p>
+
+<h3>Käyttäjän kannalta merkittävät muutokset</h3>
+<ul>
+<li>Versiossa 1.0 monikäsitteisistä yhdyssanoista (esimerkiksi ”kaivosaukko”) pystyi rakentamaan merkkijonoja,
+joiden oikoluku ja tavutus vei niin paljon prosessoriaikaa, että libvoikkoa käyttävät ohjelmat käytännöllisesti
+katsoen jumiutuivat. Tämä on korjattu laskemalla käsiteltävien sanojen pituusrajaa 255 merkistä 59 merkkiin.
+Samantapaisia ongelmia esiintyy myös muissa oikolukuohjelmissa. Olemme testanneet seuraavat ohjelmat:
+  <dl><dt id="soikko111bug">Soikko</dt><dd>
+    Soikon jaettu kirjasto kärsii tästä samasta ongelmasta: siinä ei sanojen pituudelle ole nähtävästi mitään ylärajaa.
+    Ongelma on korjattu ainakin Oo2-soikon versiossa 1.1.2, jossa ylärajaksi on asetettu 74 merkkiä. Jos käytät muuta
+    Soikon sisältävää oikolukuohjelmaa tai -komponenttia kuin Oo2-soikkoa, kysy ohjelman tekijältä, koskeeko ongelma myös
+    kyseistä ohjelmaa.
+  </dd><dt>hunspell</dt><dd>
+    Hunspellin jaetussa kirjastossa sanojen pituus on rajoitettu noin 100 merkkiin. Siispä kirjastoa käyttävät ohjelmat
+    eivät automaattisesti kärsi tästä ongelmasta, mutta Hunspellin komentorivityökalu (versio 1.1.4) kaatuu, jos
+    siihen syötetään yli 100 merkkiä pitkiä merkkijonoja.
+  </dd><dt>ispell ja myspell</dt><dd>
+    Näissä on noin 100 merkin yläraja käsiteltävien sanojen pituudelle, eikä niissä näytä olevan tätä ongelmaa.
+  </dd><dt>Microsoft Word</dt><dd>
+    Wordin suomen kielen oikoluku näyttäisi rajoittavan oikoluettavien sanojen pituuden noin 60 merkkiin. Tätä pidemmät
+    sanat hyväksytään aina oikeiksi. Word ei siis kärsi tästä ongelmasta.
+  </dd></dl></li>
+<li>OpenOffice.orgissa oikolukudialogin kautta tehtävä oikoluku on korjattu.</li>
+<li>Väärin kirjoitettujen sanojen korjausehdotuksia on korjattu.</li>
+<li>Lisätty tuki erinäisille vaihtoehtoisille Unicode-merkeille ja merkkiyhdistelmille oikoluvussa.</li>
+<li>Pieni määrä virheellisesti hyväksyttyjä taivutuksia on korjattu.</li>
+<li>Lisätty tuki tyyppiä mAinen (”koiramainen”) ja lAinen (”jyväskyläläinen”) oleville johdoksille.</li>
+<li>Tmispell-voikon interaktiivinen käyttöliittymä on saatavissa suomenkielisenä.</li>
+</ul>
+
+<h3>Ohjelmistonkehittäjien kannalta merkittävät muutokset</h3>
+<ul>
+<li>Oo2-voikko ja tmispell-voikko eivät enää käytä ohjelmakirjastojen avaamiseen dlopen/dlsym -kutsuja vaan
+normaalia käännösaikaista dynaamista linkitystä.</li>
+</ul>
+
+
+<h2>Versio 1.0</h2>
+<p>Voikon ensimmäinen vakaa versio 1.0 julkaistiin 13.8.2006, ja se koostuu seuraavista komponenteista:</p>
+<ul>
+<li>libvoikko 1.0</li>
+<li>Suomi-malaga 0.7.1 (”Voikko edition”)</li>
+<li>Oo2-voikko 1.0</li>
+<li>tmispell-voikko 0.5.0.</li>
+</ul>
+<p>Tämä versio vaatii toimiakseen malagan version 7.4 tai uudemman.</p>
+</div>
+<div style="clear:both;" />
+
+</body>
+</html>

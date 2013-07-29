@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fi" xml:lang="fi">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Voikko – ohjelmistojen suomennosten oikoluku</title>
+<link rel="stylesheet" type="text/css" href="stylesheets/styles.css" />
+</head>
+<body class="wide">
+
+<p class="linkback"><a href=".">← Takaisin etusivulle</a></p>
+
+<h1>Voikko<br /><small>ohjelmistojen suomennosten oikoluku</small></h1>
+
+<p>Vapaiden ohjelmistojen käyttöliittymien suomentaminen tapahtuu tavallisesti
+niin sanottuja po-tiedostoja muokkaamalla. Tällä sivulla kerrotaan, kuinka näitä
+tiedostoja voi tehokkaasti oikolukea Voikon avulla. Sivulta löytyy myös vinkkejä
+www-pohjaisten käännöstyökalujen (Pootle yms.) käyttäjille. Sivu on siis tarkoitettu
+ohjelmistojen suomentajien opastukseksi.</p>
+
+
+<h2>Käytettävissä olevat työkalut</h2>
+
+<h3>Po-tiedostojen oikoluku www-liittymän kautta</h3>
+
+<p>Valmiin po-tiedoston voi oikolukea ilman omalle koneelle asennettavia
+lisäohjelmia käyttämällä
+<a href="http://joukahainen.puimula.org/webvoikko/pospell">Webvoikon
+po-oikolukutoimintoa</a>. Webvoikon käyttämä sanasto on muunneltu versio Voikon
+perussanastosta: siihen on lisätty atk-sanastoa, matemaattis-luonnontieteellistä
+sanastoa ja joitakin erityisesti po-tiedostoissa vastaan tulevia merkkijonoja,
+joita oikoluvussa käytetty pofilter-ohjelmisto ei vielä osaa käsitellä.</p>
+
+<h3>Po-tiedostojen oikoluku pofilter-ohjelmalla</h3>
+
+<p>Jos Webvoikko ei vastaa tarpeitasi tai muuten haluat suorittaa oikoluvun
+kokonaan omalla koneellasi, voit käyttää translate-toolkit-ohjelmapaketin
+mukana tulevaa pofilter-ohjelmaa. Sen avulla po-tiedostoista voi etsiä muitakin
+ongelmia kuin kirjoitusvirheitä, joten ohjelmaan tutustuminen on paljon käännöstyötä
+tekeville erittäin suositeltavaa. Myös Webvoikko käyttää tätä ohjelmaa, joten
+lopputuloksen kannalta ei ole juurikaan merkitystä, kumpaa oikolukuun käyttää.
+Pofilter käyttää oikoluvussa Enchant-kirjastoa.</p>
+
+<p>Tarvittavat ohjelmat ovat mukana ainakin Debianissa (testing/lenny ja unstable) ja
+Ubuntussa (7.10 ja uudemmat). Näissä on asennettava ohjelmapaketit
+<tt>translate-toolkit</tt>, <tt>libenchant-voikko</tt> ja <tt>python-enchant</tt>.</p>
+
+<p>Jos suomenkieliset käännökset sijaitsevat tiedostossa kaannos.po, seuraava komento
+tuottaa listan mahdollisista kirjoitusvirheistä tiedostoon errors.po:</p>
+<pre>
+pofilter --gnome --lang=fi -tspellcheck -ikaannos.po -oerrors.po
+</pre>
+
+<p>Parametri --gnome (tai --kde, --openoffice tai --mozilla) näyttää olevan tarpeellinen
+oikoluvun toiminnan kannalta. Tämä saattaa olla bugi pofilterissä.</p>
+
+<h3>Oikoluku po-editorissa</h3>
+
+<p>Po-tiedostoja voi oikolukea jo muokkauksen aikana, jos käyttää po-editoria, jossa
+on oikolukutoiminto. <tt>KBabel</tt> on eräs tällainen ohjelma. Valitettavasti sen
+oikolukutoiminnossa näyttää olevan bugeja, sillä oikoluku saattaa yksinkertaisesti
+lakata toimimasta jossain vaiheessa ohjelman käytön aikana. Syytä tähän ei tiedetä.</p>
+
+<h3>Oikoluku www-selaimessa</h3>
+
+<p>Viime aikoina www-pohjaisten käännösohjelmistojen suosio on ollut kasvussa. Pootle
+on suosittu www-pohjainen po-editori, ja Debianin ohjelmapakettien kuvausten kääntämisessä
+on myös otettu käyttöön www-pohjainen liittymä. Näitä kannattaa käyttää selainohjelmalla,
+jossa on käytettävissä tekstikenttien oikolukutoiminto. Firefoxiin oikoluvun saa
+Voikko-lisäosan avulla, ja Konquerorissa oikoluku toimii, jos <tt>tmispell-voikko</tt>
+on asennettu ja KDE:n oikolukuasetukset ovat kunnossa. Oikoluku on erittäin hyödyllinen
+toiminto myös wikisivuja muokattaessa.</p>
+
+<h2>Sopiva oikolukusanasto</h2>
+
+<p>Ohjelmien oikoluku onnistuu toki Voikon perussanastonkin avulla. Siitä kuitenkin
+puuttuu paljon tietotekniikan erikoissanastoa, jota ohjelmien käyttöliittymissä
+esiintyy. Siksi oikoluku onnistuu tehokkaammin ja mukavammin, kun käytössä on sopivasti
+laajennettu sanasto. Merkittävä parannus perussanastoon saadaan, kun siihen lisätään
+atk-erikoissanasto sekä atk-lyhenteet. Myös matemaattis-luonnontieteellisen alan
+sanaston lisäämisestä on usein hyötyä, ainakin jos suomennettavana on
+taulukkolaskenta- tai kuvankäsittelyohjelmia.</p>
+
+<p>Webvoikossa tällainen sanasto on jo käytössä, mutta omalla koneella oikolukua
+tekevien on koottava se itse. Tämän voi tehdä Suomi-malagan kehitysversiosta
+asentamalla ohjelmapaketit <tt>subversion</tt> ja <tt>malaga-bin</tt> ja antamalla
+seuraavat komennot:</p>
+
+<pre>
+mkdir -p ~/po-oikoluku
+cd ~/po-oikoluku
+svn co https://voikko.svn.sourceforge.net/svnroot/voikko/trunk/suomimalaga suomimalaga
+cd suomimalaga
+make voikko GENLEX_OPTS="--extra-usage=it,science" \
+ EXTRA_LEX="vocabulary/erikoisalat/atk-lyhenteet.lex vocabulary/erikoisalat/po-oikoluku.lex"
+</pre>
+
+<p>Jos käytössäsi on libvoikko 1.6 tai uudempi, erikoissanaston saa käyttöön
+asettamalla ympäristömuuttujan VOIKKO_DICTIONARY_PATH arvoksi polun siihen
+hakemistoon, jossa sanasto on. Jos esimerkiksi käyttää Pootlea Konquerorin
+kautta, voi Konquerorin käynnistää komennolla</p>
+
+<pre>
+VOIKKO_DICTIONARY_PATH=~/po-oikoluku/suomimalaga/voikko konqueror
+</pre>
+
+<p>Versiota 1.6 vanhempaa libvoikkoa käytettäessä ympäristömuuttuja ei toimi, vaan
+oikolukusanaston käyttöönotto tapahtuu luomalla symbolinen linkki komennolla
+<kbd>ln&nbsp;-s&nbsp;~/po-oikoluku/suomimalaga/voikko&nbsp;~/.voikko</kbd> Linkki
+kannattaa poistaa po-tiedostojen oikoluvun jälkeen, sillä muutoin tätä erikoissanastoa
+käytetään myös muuhun Voikon avulla tehtävään oikolukuun, mikä ei välttämättä
+ole toivottavaa.</p>
+
+<p><strong>Huom:</strong> Erikoissanaston käyttöönotto yllä kuvatulla tavalla
+ei toimi Firefoxissa, jos siihen on asennettu oikolukulisäosa Mozillan
+lisäosapalvelimelta. Ainoastaan Linux-jakeluita varten paketoidut lisäosat
+mahdollistavat vaihtoehtoisten sanastojen käytön tällä tavalla. Mozillan
+palvelimilta saatavan Voikko-lisäosan saa käyttämään omaa tai käyttöjärjestelmän
+mukana tullutta sanastoa poistamalla lisäosan asennushakemistosta tiedoston
+voikko-fi_FI.pro.</p>
+
+<p>(TODO: Miten lisään sanastoon oman projektini nimistöä?)</p>
+
+
+<p>Kannattaa huomata, että varsinaisten kirjoitusvirheiden lisäksi Voikko havaitsee myös
+joitakin yhdyssanoihin liittyviä kielivirheitä. Se ei esimerkiksi hyväksy sanaa "olemassaoleva"
+vaan ehdottaa sen jakamista sanoiksi "olemassa oleva". Tämä onkin suositeltavampi muoto.
+Tällaiset korjaukset kannattaa silti käydä läpi tavallista huolellisemmin, sillä joskus
+ne vaativat laajempia korjauksia alkuperäiseen käännökseen. Joissakin tapauksissa voi
+myös olla, että käytetty yhdyssana on sopivaa kirjoittaa yhteen. Mikäli katsot, että
+Voikko virheellisesti hylkää jonkin sanan, voit ehdottaa sen lisäämistä sanastoon
+<a href="http://joukahainen.puimula.org/ehdotasanoja">sanastonkeruulomakkeen avulla</a>.
+</p>
+
+<div style="clear:both;" />
+
+</body>
+</html>

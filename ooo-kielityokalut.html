@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fi" xml:lang="fi">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Kielityökalut LibreOfficessa</title>
+<link rel="stylesheet" type="text/css" href="stylesheets/styles.css" />
+</head>
+<body>
+
+<p class="linkback" style="max-width: 4em"><a href=".">← Voikko-projektin sivuille</a></p>
+
+<h1>Kielityökalut LibreOfficessa</h1>
+
+<p><small>Nämä samat ohjeet soveltuvat myös vanhemmalle OpenOffice.org-ohjelmistolle. Toimivuutta
+Apache OpenOfficessa ei ole testattu.</small></p>
+
+<h2>Käyttöönotto</h2>
+
+<p>LibreOffice ei toistaiseksi sisällä kielityökaluja suomen kielelle. Ne saa käyttöön asentamalla
+Voikkoon perustuvan lisäosan nimeltä libreoffice-voikko.</p>
+
+<p class="center"><img class="ohjekuva_teksti" alt="Muokkaa moduuleja -asetusikkuna" src="images/muokmod.png" /></p>
+<p>
+Asennettuasi lisäosan varmista, että Voikko on aktivoitu kirjoituksen aputyökaluissa.
+Tämän voit tehdä valitsemalla <span class="valikko">Työkalut -&gt; Asetukset -&gt; Kieliasetukset -&gt;
+Kirjoituksen aputyökalut</span>
+(engl. <span class="valikko">Tools -&gt; Options -&gt; Language Settings -&gt; Writing aids</span>).
+
+Paina listan <span class="valikko">Käytettävissä olevat kielimoduulit</span>
+(<span class="valikko">Available language modules</span>)
+vieressä olevaa painiketta <span class="valikko">Muokkaa</span> (<span class="valikko">Edit</span>).
+Näyttöön avautuu uusi ikkuna. Valitse kielivalikosta suomi ja rastita
+kohdat <span class="valikko">Suomen kielen oikoluku (Voikko)</span>, <span class="valikko">Suomen kieliopin tarkistus (Voikko)</span> ja
+<span class="valikko">Suomen kielen tavutus (Voikko)</span>. Jos listalla
+on muita oikeinkirjoitus- tai tavutusmoduuleja, poista rastit niiden edestä.</p>
+
+
+<h2>Pikaohje käyttäjille <small>(riittää tavalliseen käyttöön)</small></h2>
+
+<h3>Oikoluku</h3>
+<p>Oikoluvun toiminta edellyttää, että tekstin kieli on oikein asetettu. Uusien asiakirjojen oletuskieli valitaan asetuksista
+(<span class="valikko">Työkalut -&gt; Asetukset -&gt; Kieliasetukset -&gt; Kielet -&gt; Asiakirjojen oletuskielet</span>). Tämä asetus vaikuttaa siis vain uusiin Writerissä luotuihin asiakirjoihin. Vanhoihin asiakirjoihin kielen saa vaihdettua avaamalla asiakirjan, valitsemalla koko tekstin (<span class="valikko">Muokkaa -&gt; Valitse kaikki</span>) ja asettamalla kielen fontin asetuksista (<span class="valikko">Muotoilu -&gt; Fontti -&gt; Fontti -&gt; Kieli</span>). Tämä voi olla tarpeen myös Microsoft Wordissa luotuja asiakirjoja käsiteltäessä, sillä Word usein arvaa (valitettavasti väärin) asiakirjan kielen.</p>
+<p>Kätevimmin oikoluvun käyttö onnistuu, kun aktivoi automaattisen oikoluvun työkalurivin painikkeesta <img src="images/autom_oikoluku.png" alt="ABC punaisella aaltoviivalla alleviivattuna" width="27" height="23" class="ohjekuva_teksti" />.</p>
+
+<h3>Tavutus</h3>
+<p>Tavutus vaatii myös, että tekstin kieli on oikein asetettu. Katso kohdasta Oikoluku kuinka tämä tapahtuu. Useimmat haluavat tavutuksen tapahtumaan automaattisesti koko tekstissä. Tämä onnistuu, kun valitset koko tekstin (<span class="valikko">Muokkaa -&gt; Valitse kaikki</span>) ja otat automaattisen tavutuksen käyttöön kappaleen asetuksissa (<span class="valikko">Muotoilu -&gt; Kappale -&gt; Tekstin rivitys -&gt; Tavutus&nbsp;automaattisesti</span>).</p>
+
+<h2>Tarkempi ohje käyttäjille <small>(lue, jos tarvitset lisää tietoa)</small></h2>
+
+<h3>Kirjoituksen aputyökalut</h3>
+<p>Kirjoituksen aputyökaluja (eli oikoluku, tavutus, kieliopin tarkistus ja synonyymisanasto) voi asentaa valitsemalla valikosta
+<span class="valikko">Työkalut -&gt; Kieli -&gt; Lisää sanastoja verkosta</span>. Linux-järjestelmissä voi vaihtoehtoisesti asentaa haluamansa kielen kielituen
+järjestelmän kieliasetusten kautta. Tällöin kielityökalut tulevat myös muiden ohjelmistojen käyttöön.</p>
+
+<p>Samaa kieltä varten voi olla asennettuna useampiakin oikoluku- ja tavutuskomponentteja. Tätä varten voi asetuksissa (<span class="valikko">Työkalut -&gt; Asetukset -&gt; Kieliasetukset -&gt; Kirjoituksen aputyökalut</span>) valita, mitkä komponentit ovat käytössä milläkin kielellä. Listassa "Käytettävissä olevat kielimoduulit" olevista ruuduista voi tietyn komponentin ottaa käyttöön tai poistaa kokonaan käytöstä.
+Parasta on kuitenkin käyttää listan vieressä olevaa Muokkaa-painiketta ja asettaa kielimoduulit kielikohtaisesti. Oletusasetukset ovat yleensä järkevät, mutta aina uuden kielimoduulin tai sanaston asentamisen jälkeen (ja silloin jos jokin työkalu ei näytä toimivan) kannattaa tarkistaa, että kyseisen kielen kohdalla asetukset ovat oikein. Oikeinkirjoituksen tarkistusta varten voi olla valittuna useampikin kuin yksi oikolukukomponentti. Tällöin sana hyväksytään oikein kirjoitetuksi, jos ainakin yksi valituista komponenteista sen hyväksyy. Väärin kirjoitetuille sanoille korjausehdotukset tulevat 
+listassa ylimpänä olevasta valitusta komponentista. Tavutuskomponenteista vain yksi voi olla valittuna.</p>
+
+<h3>Tekstin kieli</h3>
+<p>Kaikkien kirjoituksen aputyökalujen toiminnan kannalta on tärkeää, että tekstin kieli on määritelty oikein. Writer sallii tekstin kielen määrittelyn yksittäisten sanojen tarkkuudella. Tämä onkin järkevää, sillä usein esimerkiksi suomenkieliseen tekstiin upotetut englanninkieliset osat ovat nimiä, lainauksia tai yksittäisiä sanoja eivätkä kokonaisia kappaleita.
+Sanan tarkkuudella tehty kielen määrittely varmistaa sen, että tekstin tavutus tapahtuu aina tavutettavan kielen säännöillä. Lisäksi oikoluku ei turhaan huomauta tuntemattomista sanoista. Haittapuolena tästä on se, että kieli pitää määritellä fontin asetuksissa (<span class="valikko">Muotoilu -&gt; Fontti -&gt; Fontti -&gt; Kieli</span>) josta muita tekstinkäsittelyohjelmia aikaisemmin käyttäneet eivät yleensä osaa sitä ensimmäisenä etsiä.</p>
+<p>Uusien asiakirjojen oletuskieli voidaan asettaa ohjelman asetuksista (<span class="valikko">Työkalut -&gt; Asetukset -&gt; Kieliasetukset -&gt; Kielet -&gt; Asiakirjojen oletuskielet</span>).</p>
+
+<h3>Erikoissanastot</h3>
+<p>Voikolle on saatavissa perussanaston lisäksi myös erikoissanastoja, esimerkiksi lääketieteellinen sanasto, murresanasto ja ATK-sanasto. Vain yksi sanasto
+voi olla kerrallaan käytössä. Mikäli olet asentanut lisäosan, joka sisältää useita sanastoja, voit valita kulloinkin tekstillesi parhaiten
+sopivan sanaston asetuksista <span class="valikko">Työkalut -&gt; Asetukset -&gt; Kieliasetukset -&gt; Voikko</span>.</p>
+
+<h3>Oikoluku</h3>
+<p>Kun kielimoduulit on oikein asetettu ja tekstin kieli kohdallaan, oikoluvun saa yksinkertaisimmin toimimaan aktivoimalla automaattisen oikoluvun työkalurivin painikkeesta <img src="images/autom_oikoluku.png" alt="ABC punaisella aaltoviivalla alleviivattuna" width="27" height="23" class="ohjekuva_teksti" />. Korjausehdotukset väärin kirjoitetuille sanoille saa tällöin oikealla hiiren painikkeella virheellisesti kirjoitetun sanan päältä. Vaihtoehtoisesti voi oikoluvun suorittaa erikseen (<span class="valikko">Työkalut -&gt; Oikeinkirjoituksen tarkistus</span>).</p>
+
+<h3>Tavutus</h3>
+<p>Tekstin tavutuksen voi tehdä kolmella eri tavalla:</p>
+<ul><li>Täysin automaattisen tavutuksen saa toimimaan kappaleen asetuksista (<span class="valikko">Muotoilu -&gt; Kappale -&gt; Tekstin rivitys -&gt; Tavutus automaattisesti</span>). Tämä asetus on kappalekohtainen. Tavujakoja ei tallenneta tekstiin tavutusvihjeinä.</li>
+<li>Manuaalisesti tavutuksen voi tehdä lisäämällä sanoihin tavutusvihjeitä (Control + tavuviiva). Nämä tavutusvihjeet tallentuvat tekstiin, mutta eivät tule näkyviin ellei sanaa jaeta tavutusvihjeen kohdalta. Tavutusvihjeet ovat näkyvissä myös silloin, kun kentän varjostus (<span class="valikko">Näytä -&gt; Kentän varjostus</span>) on valittuna, jolloin niitä pystyy myös poistamaan.</li>
+<li>Tavutuksen voi tehdä "puoliautomaattisesti" (<span class="valikko">Työkalut -&gt; Kieli -&gt; Tavutus</span>). Tällöin ohjelma varmistaa käyttäjältä jokaisen tavutuskohdan erikseen, ja käyttäjällä on mahdollisuus hylätä kyseinen tavutus tai valita jokin toinen tavurajan paikka. Hyväksyttyihin kohtiin lisätään tavutusvihje, jonka voi tarvittaessa poistaa edellisessä kohdassa kuvatulla tavalla. Jos kirjoituksen aputyökalujen asetuksissa on valittuna "Tavuta kysymättä", tämäkin tavutus
+tapahtuu kysymättä käyttäjältä varmistusta tavutusvihjeiden paikalle (tätä ei kannata tehdä, järkevämpää on käyttää ensiksi mainittua täysin automaattista tavutusta). Koska puoliautomaattinen tavutus perustuu tavutusvihjeiden lisäämiselle, tekstin muuttaminen tavutuksen jälkeen voi johtaa tekstin epäoptimaaliseen tavutukseen, joka korjaantuu suorittamalla puoliautomaattinen tavutus uudelleen.</li></ul>
+<p>Manuaalisen ja "puoliautomaattisen" tavutuksen tekstiin jättämät tavutusvihjeet voi poistaa käyttämällä toimintoa <span class="valikko">Muokkaa -&gt; Etsi ja korvaa</span>. Toiminnon lisävalinnoissa on laitettava rasti ruutuun "Säännölliset lausekkeet", etsittäväksi tekstiksi laitetaan <kbd>\x00AD</kbd> ja korvaava teksti jätetään
+tyhjäksi. Lopuksi painetaan "Korvaa kaikki". Vaikka kappaleen automaattinen tavutus olisi käytössä, tavutusvihjeitä sisältäviä sanoja ei tavuteta muualta kuin tavutusvihjeen kohdalta. Tämän johdosta on mahdollista korjata automaattisen tavutuksen tekemiä virheitä lisäämällä tavutusvihje käsin oikeaan paikkaan.</p>
+
+<div style="clear:both;" />
+
+</body>
+</html>

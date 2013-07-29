@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fi" xml:lang="fi">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Voikko – Käyttö sovellusohjelmissa</title>
+<link rel="stylesheet" type="text/css" href="stylesheets/styles.css" />
+</head>
+<body>
+
+<p class="linkback"><a href=".">← Takaisin etusivulle</a></p>
+
+<h1>Voikko<br /><small>Käyttö sovellusohjelmissa</small></h1>
+<dl>
+<dt>LibreOffice</dt>
+  <dd>Jos oikoluku tai tavutus ei heti lähde toimimaan, lue ohje 
+    <a href="ooo-kielityokalut.html">kielityökaluille
+    LibreOffice-ohjelmistossa</a>.
+  </dd>
+<dt>Enchantia käyttävät ohjelmat (esim. kaikki KDE 4:n ohjelmat, Abiword, XChat ja gedit)</dt>
+  <dd>Näissä oikoluku Voikon avulla toimii yleensä ongelmitta, kunhan Enchantin Voikko-lisäosa
+    on asennettu. Jos oikoluku toimii, mutta sen laatu vaikuttaa heikolta, poista mahdollisesti
+    asennettuna olevat muut suomen kielen oikolukusanastot (myspell-fi,
+    aspell-fi, ifinnish, ifinnish-large ja ifinnish-small).
+  </dd>
+<dt>Gnomen ohjelmat</dt>
+  <dd>Gnomessa eri ohjelmat hoitavat oikoluvun varsin eri tavoilla, joten yksinkertaista ratkaisua
+    Voikon käyttöön niissä ei ole. Suurin osa Gnomesta on kuitenkin jo siirtynyt tai siirtymässä
+    Enchant-oikolukukirjaston käyttöön, ja näissä Voikko jo toimii.
+  </dd>
+<dt>KDE 3:n ohjelmat</dt>
+  <dd>KDE 3:ssa voi käyttää tmispell-voikkoa. Valitse KDE 3:n asetuksista oikolukuohjelmaksi ”ispell”,
+    kieleksi ”suomi” ja oikoluvun merkistöksi ”UTF-8”. Joissakin KDE 3:n ohjelmissa (KWord on
+    tunnetuin tapaus) Voikko ei toimi. Ongelma on KDE:ssa, ja se on korjattu KDE:n
+    versiossa&nbsp;4 (KOffice 2.0).
+  </dd>
+<dt>Mozillan ohjelmat</dt>
+  <dd>Oikolukulaajennus Firefox-selaimeen ja Thunderbirdin tulevaan versioon 3
+    on <a href="https://addons.mozilla.org/fi/firefox/addon/3826">saatavilla Mozillan lisäosapalvelusta</a>.
+    Linux-jakeluissa on kuitenkin tämän sijasta suositeltavaa käyttää jakelun omasta
+    pakettivarastosta saatavaa laajennusta, jos sellainen on tarjolla.
+  </dd>
+<dt>Ispelliä käyttävät ohjelmat</dt>
+  <dd>Tmispell-voikko tarjoaa ispell-yhteensopivan rajapinnan niille sovelluksille, jotka tukevat
+    ispellin käyttöä oikoluvussa. Se osaa kutsua aitoa ispelliä muita kuin suomen kieltä oikoluettaessa,
+    joten sen asentaminen ei estä oikolukua muilla kielillä.
+  </dd>
+<dt>Emacs</dt>
+  <dd>Emacs-tekstieditorin mukana tulee oikolukutoiminnot ispell-mode ja
+    flyspell-mode. Niiden kanssa on mahdollista käyttää Voikkoa
+    Tmispell-voikon avulla. Emacsille on saatavana myös wcheck-mode,
+    joka on yleiskäyttöisempi tila ja tukee paremmin
+    Enchant-oikolukujärjestelmää. Wcheck-mode on ladattavissa
+    <a href="https://github.com/tlikonen/wcheck-mode">GitHubista</a>.
+  </dd>
+<dt>Vim</dt>
+  <dd>Vim-tekstieditorin mukana tulevaa oikolukujärjestelmää ei
+    valitettavasti voi käyttää Voikon kanssa. Vimille on kuitenkin
+    olemassa Vimchant-niminen oikolukulaajennos, joka tukee Enchantia.
+    Vimchant-laajennoksen voi
+    noutaa <a href="http://www.vim.org/scripts/script.php?script_id=2345">www.vim.orgista</a>
+    tai <a href="https://github.com/voikko/corevoikko/tree/master/tools/vim">Voikon
+    versionhallinnasta</a>.
+  </dd>
+<dt>OS X -käyttöjärjestelmän sovellukset</dt>
+  <dd>Kaikki käyttöjärjestelmän oikolukupalvelua käyttävät sovellukset saa oikolukemaan suomea
+    asentamalla Voikkoon pohjautuvan järjestelmän oikolukomponentin.</dd>
+<dt>Ohjelmistojen suomennosten oikoluku</dt>
+  <dd>Voikko soveltuu hyvin ohjelmistojen suomennosten oikolukuun, sillä sille on tehty
+    erityisesti tähän tarkoitukseen suunniteltu lisäsanasto. Työkaluja erityisesti vapaiden
+    ohjelmistojen lokalisoinnissa käytettävien po-tiedostojen oikolukuun on useita.
+    Katso <a href="po-oikoluku.html">ohjeita ohjelmistojen suomennosten oikolukuun</a>.
+  </dd>
+</dl>
+
+<h2>Tunnettuja bugeja</h2>
+<ul>
+<li>KDE 4:n bugi <a href="https://bugs.kde.org/show_bug.cgi?id=223121">#223121</a>:
+Suomen kieli ei näy oikolukusanastojen listalla ellei Hunspell-sanastoa ole asennettu.
+Tyhjäkin suomen kielen Hunspell-sanasto riittää, eli suorita
+root-käyttäjänä seuraavat komennot ongelman korjaamiseksi:
+<pre>
+touch /usr/share/hunspell/fi_FI.dic
+touch /usr/share/hunspell/fi_FI.aff
+</pre>
+</li>
+<li>Thunderbird 3:n bugi <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=522047">#522047</a>:
+Suomen kieli ei näy oikolukusanastojen listalla. Ongelman voi kiertää asentamalla minkä
+tahansa muun kielen oikolukusanaston, jolloin oikolukukielen voi valita viestieditorissa
+(mutta ei asetusdialogissa).</li> 
+</ul>
+
+<div style="clear:both;" />
+
+</body>
+</html>
