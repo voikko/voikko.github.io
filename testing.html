@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fi" xml:lang="fi">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Voikko – Tietoa ohjelmiston testaajille</title>
+<link rel="stylesheet" type="text/css" href="stylesheets/styles.css" />
+</head>
+<body class="wide">
+
+<p class="linkback"><a href=".">← Takaisin etusivulle</a></p>
+
+<h1>Voikko<br /><small>Tietoa ohjelmiston testaajille</small></h1>
+
+<p>Tällä sivulla annetaan ohjeita Voikon testauksesta kiinnostuneille. Suomi-malagan
+kehitysversion käyttö on yleensä yksinkertaisin tapa seurata Voikon kehitystä. Täysi
+testiympäristö kannattaa asentaa vain, jos haluaa vakavasti osallistua Voikon testaamiseen.
+Tämä edellyttää jo jonkin verran teknistä osaamista.</p>
+
+<p>Ohjeissa oletetaan, että käytössä on uusin kehitysversio libvoikosta ja
+Suomi-malagasta. Uusimmat vakaat versiot eivät välttämättä riitä.</p>
+
+<h2>Suomi-Malagan kehitysversion käyttö</h2>
+
+<p>Suomi-Malaga on Voikon komponentti, joka sisältää suomen kielen sanaston
+sekä säännöt sanojen taivutuksesta, johtamisesta ja käytöstä yhdyssanan osana.
+Tästä syystä se on Voikon komponenteista ehkä kaikkein näkyvimmin kehittyvä.
+Jos haluat testata uusimpia kehitysversioita, se käy melko helposti alla
+olevien ohjeiden avulla.</p>
+
+<ol>
+
+<li><p>Asenna versionhallintatöykalu <tt>git</tt> sekä Malagaan kuuluva
+osa <tt>malaga-bin</tt>. Asenna myös kehitystyökalu <tt>make</tt> ja
+<tt>python</tt>-tulkki. Debianissa nämä ovat samannimisissä
+paketeissa.</p></li>
+
+<li><p>Lataa Suomi-Malaga versionhallinnasta omaan kotihakemistoosi seuraavilla
+komennoilla:</p>
+<pre>
+mkdir ~/git
+git clone git://github.com/voikko/corevoikko.git ~/git/corevoikko
+mkdir -p ~/.voikko/2
+ln -s ~/git/corevoikko/suomimalaga/voikko ~/.voikko/2/mor-standard
+</pre>
+</li>
+
+<li><p>Käännä Suomi-Malaga komennolla:</p>
+<pre>
+cd ~/git/corevoikko/suomimalaga
+make voikko
+</pre>
+</li>
+
+<li><p>Mikäli kääntämisessä ei tapahtunut virheitä, Suomi-Malagan kehitysversio
+on nyt käyttövalmis. Libvoikko käyttää automaattisesti kotihakemistossa olevaa
+Suomi-Malagaa, jos sellainen on olemassa. Jos myöhemmin haluat päivittää
+uudempaan kehitysversioon, se tapahtuu seuraavilla komennoilla:</p>
+<pre>
+cd ~/git/corevoikko/suomimalaga
+git pull -r
+make voikko
+</pre>
+</li>
+
+</ol>
+
+<h2>Debian-asennuspaketit Voikon kehitysversioista</h2>
+
+<p>Jos käytät Debiania tai jotakin siihen perustuvaa Linux-jakelua, voit tehdä
+<tt>deb</tt>-asennuspaketit Voikon kehitysversioista käyttämällä bash-skriptiä
+<a
+href="https://raw.github.com/voikko/debian-packages/master/tools/makevoikkodeb"><tt>makevoikkodeb</tt></a>.
+Skripti osaa muun muassa hakea automaattisesti versionhallintajärjestelmästä
+lähdekoodin halutulle Voikon komponentille ja kääntää sen valmiiksi
+<tt>deb</tt>-asennuspaketiksi. Ohjeita skriptin käytöstä saat käynnistämällä
+sen ilman parametreja: <kbd>makevoikkodeb</kbd>. Seuraavaksi joitakin
+esimerkkejä:</p>
+
+<ul>
+
+<li><p>Asennuspaketit uusimmista Voikon kehitysversioista käännetään
+seuraavilla komennoilla:</p>
+<pre>
+makevoikkodeb suomimalaga
+makevoikkodeb libvoikko
+makevoikkodeb ooovoikko
+makevoikkodeb tmispell
+</pre>
+<p>(Jos kääntämiseen tarvittavia muita paketteja ei ole koneelle asennettuna,
+<tt>makevoikkodeb</tt> kertoo tarvittavien pakettien nimet ja keskeyttää
+toiminnan. Kun olet asentanut pyydetyt paketit, aja komento uudelleen.)</p>
+</li>
+</ul>
+
+<h2>Suomi-malagan ja libvoikon testausohjeita kehittäjille</h2>
+
+<p>Nämä ohjeet on siirretty englanninkieliseen <a href="https://github.com/voikko/corevoikko/wiki/libvoikko-IntegrationTesting">kehityswikiin</a>.</p>
+
+<h2>Suomi-malagan Voikko-version (SMV) julkaisukriteerit ja testimenetelmiä</h2>
+<p>Julkaisua edeltävän testauksen tavoitteena on varmistaa, että SMV täyttää seuraavat kriteerit:</p>
+<ol>
+<li>Oikeita sanoja tunnistetaan vähintään yhtä paljon kuin edellisessä vakaassa versiossa.</li>
+<li>Virheellisiä sanoja tunnistetaan korkeintaan yhtä paljon kuin edellisessä vakaassa versiossa.</li>
+<li>Yleisistä suomen kielen sanoista ei jää tunnistumatta sellaisia, jotka edellinen vakaa versio
+tunnisti.</li>
+<li>Nopeus satunnaisia merkkijonoja käsiteltäessä ei ole mitattavissa määrin hitaampi kuin edellisessä
+vakaassa versiossa.</li>
+<li>Nopeus oikeita suomen kielen sanoja käsiteltäessä ei ole mitattavissa määrin hitaampi kuin
+edellisessä vakaassa versiossa.</li>
+<li>Uusia virheellisesti tavuttuvia sanoja on merkittävästi vähemmän kuin uusia oikein tavuttuvia
+sanoja.</li>
+<li>SMV ei jumiudu tai muuten käyttäydy vakavia ongelmia aiheuttavalla tavalla millään sellaisella
+syötteellä, jonka se voi libvoikon kautta saada.</li>
+<li>SMV on joillakin edellisistä kriteereistä mitattuna sen verran edellistä vakaata versiota parempi,
+että uuden vakaan version julkaiseminen on mielekästä.</li>
+</ol>
+
+<p>Näiden kriteerien testaamiseksi alla esitetyt testit on tehtävä viimeisimmälle vakaalle versiolle
+ja uusimmalle kehitysversiolle ja vertailtava tuloksia.</p>
+
+<ul>
+<li><p>Anagrammivoikkoa voi käyttää kriteerien 2 ja 4 testaamiseen. Myös kriteerin 1 toteutumisesta voidaan
+saada tietoa, jos testi suoritetaan riittävän pitkillä sanoilla. Komento <kbd>anagrammivoikko
+sana1 sana2 sana3 ...</kbd> listaa annettujen sanojen kaikki hyväksytyt anagrammit sekä kertoo, kuinka
+paljon aikaa anagrammien testaaminen vei. Pitkien sanojen käsittely vie paljon aikaa, mutta voi antaa
+arvokasta tietoa SMV:ssä olevista virheistä joita muilla menetelmillä olisi lähes mahdotonta löytää.
+Tästä syystä testi soveltuu erittäin hyvin niille, jotka haluavat auttaa Voikon kehityksessä prosessoriaikaa
+lahjoittamalla.</p></li>
+
+<li><p>Pitkiä suomen kielen sanalistoja oikolukemalla voi testata kriteerejä 1 ja 5 sekä jossain määrin
+kriteeriä 3. Testikomennoksi käy vaikkapa <kbd>time cat sanalista.txt | voikkospell | grep W:
+&gt; virheet.txt</kbd>.</p></li>
+
+<li><p>Kriteeriä 3 (ja samalla kriteereitä 1 ja 5) voi testata samoin kuin edellä, jos käyttää valmiiden
+sanalistojen sijaan esimerkiksi suomenkielisessä Wikipediassa esiintyvien sanojen listaa. Tällaisia voi
+tehdä vaikkapa SVN:stä löytyvän työkalun <kbd>wp-wordlist</kbd> avulla (käyttöesimerkkejä skriptin
+kommenteissa).</p></li>
+
+<li><p>Kriteeriä 6 voi testata vertaamalla komennon <kbd>cat sanalista | voikkohyphenate</kbd>
+tulostetta vanhalla ja uudella SMV:n versiolla.</p></li>
+</ul>
+
+<p>Kriteeriä 7 varten ei ole olemassa mitään helppoja testejä. Toisaalta Suomi-malagan tapauksessa tämän
+kriteerin toteutuminen aiheuttaa harvoin ongelmia, sillä ohjelmointikielenä Malaga ei edes mahdollista
+täydellisesti jumiutuvien tai kaatuvien ohjelmien kirjoittamista. Hyvin pitkiin analyysiaikoihin päätyminen
+on kuitenkin mahdollista. Kriteerin 8 toteutumisen pitäisi toivottavasti selvitä muiden testien suorittamisen
+yhteydessä.</p> 
+
+<p>Erityisesti on huomattavaa, että SMV:n (kuten muidenkin Voikon komponenttien) julkaisussa tavoitteena
+on pääsääntöisesti varmistaa, että uudet versiot ovat mitattavasti edellisiä parempia. Sitä, kuinka paljon
+versioiden välillä on milläkin osa-alueella edettävä ei ole määritelty. Tämän johdosta kehittäjät voivat
+keskittyä itseään kiinnostaviin alueisiin ja välttää liian sitovien tavoitteiden aiheuttaman stressin.
+Näyttäisi siltä, että noin kolmen kuukautta versioiden välillä on sopiva ohjeelliseksi julkaisuaikatauluksi,
+mutta tässäkin ratkaisut tehdään lopulta aina tilanteen mukaan.</p>
+
+<p>Edellä listattujen menetelmien lisäksi käytössä on kehittäjätestausta varten skripti <kbd>voikkotest</kbd>,
+jonka tarkoituksena on varmistaa, että korjatut bugit pysyvät korjattuina myös myöhempien koodin
+uudelleenjärjestelyjen yhteydessä. Tästä skriptistä ei ole juurikaan hyötyä varsinaisessa testausvaiheessa
+muuten kuin varmistamaan, että testiympäristö on oikein asennettu.</p>
+
+<h2>Libreoffice-voikon testaus</h2>
+<p>Libreoffice-voikon testausta on vaikeaa helposti automatisoida. Perustoiminnallisuuden voi varmistaa
+<a href="ooov-testi.odt">valmiin testiasiakirjan</a> avulla, mutta se ei (ainakaan toistaiseksi) kata
+kaikkia testausta vaativia alueita. Manuaalisessa testauksessa on tarpeen varmistaa ainakin puoliautomaattisen
+tavutuksen ja oikoluvun toiminta. Lisäksi pitää tarkistaa, että kirjoituksen aputyökalujen asetukset toimivat
+oikein.</p>
+
+<div style="clear:both;" />
+
+</body>
+</html>

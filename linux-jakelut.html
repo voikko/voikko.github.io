@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fi" xml:lang="fi">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Voikko – Käyttö Linux-jakeluissa</title>
+<link rel="stylesheet" type="text/css" href="stylesheets/styles.css" />
+</head>
+<body>
+
+<p class="linkback"><a href=".">← Takaisin etusivulle</a></p>
+
+<h1>Voikko<br /><small>Käyttö Linux-jakeluissa</small></h1>
+
+<p>Tällä sivulla kerrotaan Voikon käytöstä niissä Linux-jakeluissa, joissa
+Voikko on jo valmiiksi mukana.</p>
+
+<hr />
+
+<h2>Ubuntu</h2>
+
+<p>Katso ohjeet uusimmille Ubuntun versioille
+<a href="http://wiki.ubuntu-fi.org/Suomen_kielen_oikoluku">Ubuntu Suomen</a> sivuilta.</p>
+
+<hr />
+
+<h2>Debian</h2>
+
+<h3>Asennettavat paketit</h3>
+
+<p>Tärkeimmät asennettavat paketit ovat sanastopaketti <strong>voikko-fi</strong> sekä</p>
+<dl>
+<dt>libreoffice-voikko</dt><dd>Tämän paketin asentaminen mahdollistaa suomen kielen oikoluvun ja
+  tavutuksen LibreOffice-ohjelmistossa.</dd>
+<dt>tmispell-voikko</dt><dd>Lisää suomen kielen tuen ispell-oikolukijaa käyttäviin ohjelmiin. Tämän avulla
+  suomen oikoluku toimii mm. KDE-työpöytäympäristössä.
+  Paketin mukana tulevassa README-tiedostossa on selvitetty, miten oikoluvun
+  voi ottaa käyttöön muutamassa ispelliä käyttävässä ohjelmassa.</dd>
+<dt>libenchant-voikko</dt>
+  <dd>Lisää suomen kielen oikoluvun mm. Abiword-tekstinkäsittelyohjelmaan ja moniin muihinkin
+  sovelluksiin.</dd>
+<dt>mozvoikko</dt>
+  <dd>Lisää suomen kielen oikoluvun Iceweasel-selaimeen.</dd>
+<dt>libvoikko-dev</dt><dd>Sisältää oikoluvun testaukseen käytettävät komentoriviohjelmat
+  <span class="progname">voikkospell</span> ja <span class="progname">voikkohyphenate</span>.
+  Tämän paketin avulla voit myös lisätä suomen kielen oikoluvun ja tavutuksen omiin C- tai C++-kielellä
+  tehtyihin ohjelmiisi.</dd>
+<dt>python-libvoikko</dt>
+ <dd>Python-moduuli libvoikkoa käyttävien Python-kielisten ohjelmien
+ kehittämiseen.</dd>
+</dl>
+
+<hr />
+
+<h2>Mageia</h2>
+
+<p>Tarvitset vähintään <em>voikko-fi</em>-paketin. Tämä riittää Voikon käyttöön sovelluksissa,
+jotka hyödyntävät <em>Enchant</em>-kirjastoa.</p>
+<dl>
+<dt>voikko-fi</dt><dd>Tuki suomen kielelle. Asennetaan automaattisesti allaolevien pakettien asennuksen yhteydessä.</dd>
+<dt>firefox-ext-mozvoikko</dt><dd>Voikko-lisäosa <em>Firefox</em>-selaimeen.</dd>
+<dt>libreoffice-voikko</dt><dd>Voikko-lisäosa <em>LibreOffice</em>-ohjelmistolle.</dd>
+<dt>voikko-tools</dt><dd>Voikon testaukseen käytettävät komentoriviohjelmat <span class="progname">voikkospell</span>, <span class="progname">voikkohyphenate</span> ja <span class="progname">voikkogc</span>.</dd>
+</dl>
+
+<hr />
+
+<h2>Fedora</h2>
+<p>Fedora 9:ssä ja uudemmissa versioissa Voikko-paketit ovat saatavilla oletusasennuslähteistä:</p>
+<dl>
+<dt>enchant-voikko</dt>
+<dd>Lisää suomen kielen oikoluvun Enchant-oikolukukirjastoa käyttäviin ohjelmiin,
+mm. useimpiin Gnome-työpöytäympäristön sovelluksiin.</dd>
+<dt>libreoffice-voikko</dt>
+<dd>Tämän paketin asentaminen mahdollistaa suomen kielen oikoluvun ja
+    tavutuksen ja kieliopin tarkistuksen LibreOffice-ohjelmistossa.</dd>
+<dt>mozvoikko</dt>
+<dd>Lisää suomen kielen oikoluvun Firefox-selaimeen.</dd>
+<dt>tmispell-voikko</dt>
+<dd>Mahdollistaa suomen kielen oikoluvun ispell-oikolukuohjelmistoa käyttävissä
+sovelluksissa.</dd>
+<dt>voikko-tools</dt>
+<dd><span class="progname">voikkohyphenate</span>- ja
+    <span class="progname">voikkospell</span>-ohjelmat.</dd>
+<dt>libvoikko-devel</dt>
+<dd>Tarvittavat tiedostot omien libvoikkoa käyttävien C- ja C++-kielisten
+ohjelmien kehittämiseen.</dd>
+<dt>python-libvoikko</dt>
+<dd>Python-moduuli libvoikkoa käyttävien Python-kielisten ohjelmien
+kehittämiseen. Saatavilla Fedoran versiosta 12 lähtien.</dd>
+</dl>
+<p>Paketteja <em>enchant-voikko</em>, <em>tmispell-voikko</em> ja <em>mozvoikko</em>
+lukuun ottamatta nämä paketit ovat saatavilla myös Fedoran versioissa 7 ja 8.</p>
+<hr />
+
+<h2>OpenSUSE</h2>
+<p>Tärkeimmät Voikko-paketit ovat mukana OpenSUSEn versiossa 11.2. Lisää
+tietoja ja asennuspaketteja vanhemmille versioille on saatavilla
+osoitteesta <a href="http://opensuse.fi/Voikko">http://opensuse.fi/Voikko</a>.
+</p>
+
+<div style="clear:both;" />
+
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Voikko – Contributing</title>
+<link rel="stylesheet" type="text/css" href="stylesheets/styles.css" />
+</head>
+<body>
+
+<p class="linkback"><a href=".">← Back to Index</a></p>
+
+<h1>Voikko <br /><small>How to contribute</small></h1>
+
+<p>If you are new to this project and want to find out how to help, please see the
+<a href="faq.html" class="suomi">Finnish FAQ</a> first. This page explains how to
+contribute code and fix bugs.</p>
+<p>In order to contribute code you need to clone our Git repository, write your changes and
+commit them locally. It is best to write the patches against current Git master. To submit your
+changes use any method you like:
+pull requests or patches. If you submit patches use <kbd>git format-patch</kbd> to create the
+patch and send it as an attachment (not inline) to our mailing list. Note that very large patches
+may be rejected by the mailing list. In that case you really should use pull requests instead,
+GitHub makes that easy.</p>
+<p>If you want to help with the development of our vocabulary database (the data, not the application)
+please note that we are rather careful with the copyright issues related to dictionaries and word
+lists. You should ask for premission on our mailing list before using any external sources other than
+those already listed in corevoikko/suomimalaga/CONTRIBUTORS.</p>
+<p>We use UTF-8 encoding in all parts of our development environment, web site and applications
+so please make sure that your tools can deal with it. Especially Subversion client and text
+editors should be run under an UTF-8 locale. Some non-ASCII characters are used in Finnish, and
+they may be present in file names as well. It is perfectly possible to <em>use</em> Voikko in an
+environment where some other encoding is used. If you prefer to write Finnish with a fixed 8 bit
+encoding, ISO-8859-15 is the best choice and ISO-8859-1 is also sufficient for most use, but in
+this project UTF-8 is the standard.</p>
+
+<h2>Defect handling</h2>
+
+<p>See <a href="https://github.com/voikko/corevoikko/wiki/BugReporting">the Wiki</a> for instructions
+on reporting bugs you may find.</p>
+
+<h2>License policy</h2>
+
+<p>Everything under our version control system must be available under "GPL v3 or later".
+Additional premissions, dual licensing or use of various more permissive licenses
+(LGPL, GPL+GFDL, BSD, MPL, MIT) are allowed too, as long as it will be possible to distribute
+the work under "GPL v3 or later".</p>
+
+<p>Additionally material under some subdirectories of our projects must be available under
+GPL v2. These directories are:</p>
+<ul>
+<li>corevoikko/data</li>
+<li>corevoikko/libvoikko/data</li>
+<li>corevoikko/libvoikko/python</li>
+<li>corevoikko/libvoikko/src</li>
+<li>corevoikko/suomimalaga</li>
+<li>corevoikko/tools/pylib</li>
+<li>mozvoikko</li>
+</ul>
+
+<p>If your patches are large, please remember that we need
+them to be licensed under the same license as the files that are being patched. Usually this
+is required anyway by the GPL, but in case the files are distributed under multiple
+licenses you should give us explicit premission to use your patch under all of the relevant
+licenses. If you send us new source, data or documentation files, you can generally pick
+any license you want as long as it is compatible with our licensing policy. All source
+files should have explicit license header, unless it is unreasonable to do so.</p>
+
+<p>We do not ask for copyrights being transferred to us or anyone else (this would be very difficult to
+do under Finnish copyright law anyway). Please do not send anonymous patches, they will be rejected
+if they are longer than about five lines of code.</p>
+
+<h2>Git push access policy</h2>
+
+<p>After switching to Git from Subversion push access was offered to all developers who
+previously had commit access to Subversion. In the future we will prefer developers to
+take advantage of the distributed nature of Git and use forks and pull to deliver the changes.
+Thus we will only add new people with push access if they are really active and trustworthy.</p>
+
+<p>Voikko is becoming rather complex piece of software. Therefore we will be gradually
+adding more automated tests to avoid serious regressions in quality. All committers must be aware
+of the available testing methods for the code or other material they are modifying.
+The testing methods are described on a <a class="suomi" href="testing.html">separate
+page</a>. For Suomi-malaga and libvoikko you should use
+<kbd>voikkotest&nbsp;--base</kbd>, <kbd>voikkotest&nbsp;--current</kbd> and
+<kbd>voikkotest&nbsp;--compare</kbd> before committing any code or vocabulary changes.
+For openoffice.org-voikko the published test document should be used to test all changes.</p>
+
+<p>It is also the responsibility of the developers to improve the tests and testing tools.
+When fixing bugs in libvoikko or Suomi-malaga, new tests should be added to the files
+under corevoikko/tests/voikkotest (this is not required for vocabulary changes). For
+libreoffice-voikko new tests should be added to the test document. Changes fixing
+bugs reported to the tracker must contain a reference to that bug in the commit log message.
+When closing such bugs, mention the number of the Git revision containing the fix.</p>
+
+<p>There are not yet formal requirements to document the changes or write specifications for
+new features, but any existing documentation should be updated if you change the documented
+behaviour.</p>
+
+<p>We aim to store only original source code in our repository. Do not check in anything
+that is generated (program binaries, source packages, pdf files) or is maintained in
+another revision control system (glib sources) without asking permission from
+the mailing list.</p>
+
+<div style="clear:both;" />
+
+</body>
+</html>

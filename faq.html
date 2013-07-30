@@ -1,0 +1,259 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fi" xml:lang="fi">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Voikko – FAQ</title>
+<link rel="stylesheet" type="text/css" href="stylesheets/styles.css" />
+</head>
+<body>
+
+<p class="linkback"><a href=".">← Takaisin etusivulle</a></p>
+
+<h1>Voikko<br /><small>Usein (tai harvemmin) kysyttyjä kysymyksiä</small></h1>
+
+<h2>Kysymyksiä käyttäjiltä</h2>
+<ul>
+<li><a href="#voikko">Mikä Voikko on?</a></li>
+<li><a href="#oikoluku_kielioppi_tavutus">Mitä oikoluku, kieliopin tarkistus ja
+    tavutus tarkoittavat?</a></li>
+<li><a href="#soikko_word">Miten Voikko poikkeaa toiminnaltaan Microsoft Wordin kielityökaluista?</a></li>
+<li><a href="#kehittajat">Ketkä Voikkoa kehittävät?</a></li>
+<li><a href="#apu">Miten voin auttaa?</a></li>
+</ul>
+
+<h2>Kysymyksiä koodareilta ja ohjelmistofirmoilta</h2>
+<ul>
+<li><a href="#soveltuvuus">Mitä voin tehdä Voikolla?</a></li>
+<li><a href="#gpl">Millä lisenssillä Voikkoa levitetään?</a></li>
+<li><a href="#integrointi">Voinko liittää Voikon GPL-epäyhteensopivaan tai suljetun
+    lähdekoodin ohjelmistoon?</a></li>
+<li><a href="#lisasanastot">Voinko valmistaa ja myydä Voikon sanastoja kaupallisena
+    palveluna?</a></li>
+<li><a href="#aspell">Voikko ja aspell-, myspell- ja hunspell-yhteensopivuus</a></li>
+</ul>
+
+<h3>Lopuksi</h3>
+<ul>
+<li><a href="#muut">Minulla on kysymys, johon en löytänyt vastausta näiltä sivuilta.</a></li>
+</ul>
+
+<hr />
+
+<h2 id="voikko">Mikä Voikko on?</h2>
+<p>Voikko on kokoelma vapaita työkaluja ja sanastoja kielen jäsentämiseen,
+tekstin tarkastamiseen ja tavutukseen. Voikon ydin on yleiskäyttöinen avoimen lähdekoodin
+ohjelmakirjasto <em>libvoikko</em>, joka toteuttaa kaikki edellä mainitut
+toiminnot.</p>
+
+<p>Voikkoa on kehitetty ensisijaisesti suomen kielen tarpeisiin. Voikko onkin nykyään yksi
+parhaista saatavilla olevista työkaluista suomenkielisen tekstin tarkistukseen ja tavutukseen.
+Lisäksi Voikko on käytettävissä käsiteltäessä muitakin kieliä (mm. pohjoissaame ja gröönlanti) ja
+kieliteknologisia sovelluksia (mm. hakulavennus ja skannausvirheiden korjaus).</p>
+
+<p>Tavallisille tietokoneen käyttäjille libvoikosta ei sellaisenaan ole paljon iloa.
+Heille tutumpia ovat libreoffice-voikko (suomen kielien kielityökalut
+LibreOffice- ja OpenOffice.org-toimisto-ohjelmistoille) ja mozvoikko (suomen kielen oikoluku
+Firefox-selaimeen ja Thunderbird-sähköpostiohjelmaan). Nämä molemmat, samoin kuin
+monet muutkin ohjelmat, on rakennettu libvoikon päälle.</p>
+
+<h2 id="oikoluku_kielioppi_tavutus">Mitä oikoluku, kieliopin tarkistus ja tavutus
+   tarkoittavat?</h2>
+<p>Näillä termeillä on kieliteknologian sovelluksissa ja erityisesti tekstinkäsittelyohjelmissa
+   hiukan yleiskielestä poikkeava merkitys. Voikon kehittäjät tapaavat käyttävät näitä sanoja
+   teknisinä termeinä, joten selvennetäänpä niitä hiukan:
+</p>
+<dl>
+<dt>oikoluku</dt>
+<dd>Oikoluvussa tarkistetaan, ovatko tekstin yksittäiset sanat oikein kirjoitettuja siinä
+    mielessä, että ne ovat mahdollisia suomen (tai muun kielen) sanoja. Oikolukuohjelma ei
+    siis havaitse vääriä sanavalintoja tai kirjoitusvirheitä, joissa sanan merkitys muuttuu.
+    Esimerkiksi lause "Pekan koria on nimeltään Musti" on selvästi väärin, mutta oikolukuohjelma
+    ei sitä huomaa, koska "koria" on sanan "kori" partitiivimuoto.
+</dd>
+<dt>kieliopin tarkistus</dt>
+<dd>Kieliopin tarkistusohjelma tutkii tekstin oikeinkirjoitusta tavallisesti kappale kerrallaan.
+    Tällöin myös sanojen keskinäiset suhteet voidaan ottaa huomioon. Jos kieliopin tarkistusohjelma
+    vaikkapa tietää, että ilmaisun "on&nbsp;nimeltään" edellä tulee olla nominatiivimuotoinen nomini,
+    se voi ehdottaa sanan "koria" korvaamista sanalla "koira". Periaatteessa kieliopin
+    tarkistusohjelma voi kokonaan korvata oikolukuohjelman, mutta käytännössä
+    tekstinkäsittelyohjelmissa nämä usein ovat ainakin käyttöliittymässä erillisiä toimintoja.
+</dd>
+<dt>tavutus</dt>
+<dd>Tavutuksella tarkoitetaan tekstinkäsittelyssä sanojen jakamista kahdelle eri riville
+    yhdysmerkin avulla. Jako tapahtuu tavallisesti tavurajan kohdalta, joten toimintoa kutsutaan
+    tavutukseksi. Täsmällisesti ottaen kyse ei kuitenkaan ole tavutuksesta, sillä kaikki
+    tavurajat eivät sovi jakokohdiksi. Esimerkiksi sana "elokuva" tavutetaan "e-lo-ku-va"
+    mutta kelvollisia jakokohtia ovat ainoastaan "elo-ku-va" (lisäksi jako "elo-kuva" on
+    suositeltavampi kuin "eloku-va"). Voikon tavutus on ensisijaisesti tekstinkäsittelyohjelmia
+    varten suunniteltu, mutta myös perinteinen tavutus onnistuu sillä suurin piirtein oikein.
+</dd>
+</dl>
+
+<h2 id="soikko_word">Miten Voikko poikkeaa toiminnaltaan Microsoft Wordin kielityökaluista?</h2>
+<p>Osa Voikon käyttäjistä on aikaisemmin käyttänyt Microsoft Wordia tai muuta suomen kielen
+   kielityökalut sisältävää tekstinkäsittelyohjelmaa. Voikon käyttöön siirtyvät voivat toivoa
+   Voikon vastaavan toiminnaltaan Wordin kielityökaluja. Toivomus on oikeutettu, ja erityisesti
+   libreoffice-voikon kehityksessä yhteensopivuus pyritään järkevissä määrin säilyttämään.
+</p>
+<p>Kuitenkin haluamme kehittää Voikkoon myös ominaisuuksia, joita muissa vastaavissa ohjelmissa
+   ei ole. Koska Voikon kehittäjien joukko on suhteellisen pieni, meillä ei yleensä ole
+   valintatilanteissa varaa kehittää kahta täysin erilaista ratkaisua, vaan joudumme tekemään
+   kompromisseja. Seuraavassa muutamia asioita, joihin Voikkoon siirtyvä saattaa kiinnittää
+   huomioita:</p>
+<ul>
+<li>Voikon tapa käsitellä yhdyssanoja poikkeaa jonkin verran muista oikolukuohjelmista.
+    Tavoitteenamme on pystyä havaitsemaan sellaisiakin yhdyssanavirheitä, joita aikaisemmat
+    ohjelmat eivät ole havainneet. Voikko ei esimerkiksi hyväksy turhaa yhdysviivaa sanassa
+    "kerros-talo" vaikka se muille kielentarkistimille voi kelvatakin. Asian kääntöpuolena on se, että yhdyssanoihin
+    liittyy paljon hankalia erikoistapauksia, joita kaikkia Voikko ei vielä hallitse. Siispä
+    se saattaa toistaiseksi kieltäytyä hyväksymästä myös joitain oikein kirjoitettuja
+    yhdyssanoja. Näitä virheitä korjataan jatkuvasti, ja toivomme että lopputuloksena Voikko
+    osaa suomen yhdyssanasäännöt paremmin kuin kilpailevat ohjelmistot.
+</li>
+<li>Voikon perussanasto sisältää vähemmän puhekielisiä sanoja sekä erikoisalojen sanastoa kuin
+    muiden oikolukuohjelmien sanastot. Tällä on tarkoitus parantaa oikoluvun laatua. Voikon
+    sanastotietokantaan puhekielisiä ja erikoisalojen sanoja voi kuitenkin lisätä, ja
+    lisäsanastoja voi ottaa käyttöön oman tarpeen mukaan. Myös lisäsanastot ovat saatavilla
+    ilmaiseksi samalla lisenssillä, jolla Voikon perusosia levitetään.
+</li>
+<li>Edellisestä kohdasta johtuen Voikosta voidaan levittää sanastoltaan erilaisia versioita.
+    Siksi pelkästään se, että ohjelman toimittaja sanoo käyttävänsä Voikkoa, ei tarkoita
+    etteikö ohjelman oikolukusanasto voi sisältää laajempaa sanastoa kuin Voikon perussanaston.
+    Esimerkiksi tieteelliseen kirjoittamiseen suunnatussa ohjelmassa voi olla valmiiksi
+    käytössä joidenkin tieteenalojen erikoissanastoa, tai pikaviestiohjelman oikoluku saattaa
+    hyväksyä puhekielisiä ilmauksia.
+</li>
+</ul>
+
+<h2 id="kehittajat">Ketkä Voikkoa kehittävät?</h2>
+<p>Voikkoa kehittää joukko yksityisiä asiasta kiinnostuneita ihmisiä. Tällä hetkellä (toukokuussa
+   2012) Voikkoa kehittää ensisijaisesti Harri Pitkänen. Hänen lisäkseen mm. Marko Wallin,
+   Andris Pavenis ja Hannu Väisänen kehittävät ja testaavat Voikon sanastoa, integrointia
+   Mozillan ohjelmistoihin ja Sukija-tekstinindeksointiohjelmaa. Myös monet
+   muut osallistuvat työhön säännöllisesti esimerkiksi keräämällä sanastoa ja huolehtimalla
+   Voikon integroinnista Linux-jakeluihin ja OS X -käyttöjärjestelmän oikolukupalveluun.
+</p>
+<p>
+   Voikko ei ole akateeminen projekti, eikä sen taustalla ole yritys- tai
+   yhdistystoimintaa. Tämä ei kuitenkaan tarkoita sitä, etteivätkö yritykset tai yliopistot voisi
+   osallistua Voikon kehitykseen tai käyttää projektin tuottamia ohjelmia ja muita
+   resursseja, kunhan pelisääntöjä (siis ohjelmien ja sanastotietokantojen lisenssejä) noudatetaan.
+</p>
+
+<h2 id="apu">Miten voin auttaa?</h2>
+<p>Voikko on pääasiassa vapaaehtoisvoimin toimiva projekti, joten kaikki apu on lämpimästi
+   tervetullutta. Tässä hiukan vinkkejä alkuun pääsemiseksi.
+</p>
+<p>Ensimmäisenä kannattaa tutustua Voikon käyttöön. Helpoiten se onnistuu kokeilemalla
+   <a href="http://joukahainen.puimula.org/webvoikko">webvoikkoa</a>. Jos olet kiinnostunut
+   sanaston tai kielioppisääntöjen kehittämisestä, muita työkaluja et välttämättä tarvitsekaan.
+</p>
+<p>Helpoin tapa auttaa on käyttää Voikkoa ja kertoa havaitsemistaan puutteista. Jos
+   vaikkapa oikolukuohjelma ei tunnista oikein kirjoitettua sanaa, käytä
+   <a href="http://joukahainen.puimula.org/ehdotasanoja">sanastonkeruusovellusta</a>
+   asiasta ilmoittamiseen. Muista ongelmista voi kirjoittaa vaikkapa projektin postituslistalle.
+</p>
+<p>Voikko-projektissa eniten työaikaa menee tällä hetkellä sanaston ja
+   kielioppisääntöjen kehittämiseen. Siispä projektiin osallistuvien
+   ei tarvitse olla "tietokonenörttejä", vaan pelkällä vahvalla suomen kielen taidolla pärjää
+   hyvin. Tärkeimmät sanaston kehityksessä käytettävät työkalut toimivat www-selaimen
+   kautta, joten työhön pääsee helposti käsiksi ja sitä voi tehdä omien aikataulujensa mukaan.
+   Mitään työmäärävaatimuksia ei vapaaehtoisille aseteta, mutta vastuullista ja haastavaakin
+   työtä on tarjolla niille, jotka sellaista haluavat.
+</p>
+<p>Teknisesti suuntautuneet voivat asentaa Voikon omalle tietokoneelleen. Kun olet asentanut
+   libvoikon ja Suomi-malagan, voit käyttää komentorivillä toimivia testiohjelmia
+   <span class="progname">voikkospell</span>, <span class="progname">voikkohyphenate</span>
+   ja <span class="progname">voikkogc</span>. Tämän jälkeen voit auttaa mm.
+   <a href="testing.html">testaamalla ohjelmaa</a> tai
+   <a href="contributing.html">osallistumalla ohjelmointiin</a>.
+</p>
+<p>Jos jokin yllä mainituista tavoista osallistua projektiin kiinnostaa, tutustu rauhassa
+   sivuihimme ja ota sitten yhteyttä joko <a href="mail.html">postituslistan tai
+   palauteosoitteemme</a> kautta. Projektin organisaatiosta (tai pikemminkin sen puutteesta) johtuen
+   emme voi maksaa työstä korvausta, kirjoittaa työtodistuksia tai toimia oppilaitosten
+   harjoitus- tai opinnäytetöiden ohjaajina.
+</p>
+<p>Kehitystyöhön osallistuvat voivat omatoimisesti
+   pyrkiä hankkimaan työlleen rahoitusta tai selvittää, voiko esimerkiksi tutkintoon kuuluvia
+   harjoitustöitä tehdä Voikkoon liittyvästä aiheesta. Molempia on tehty, joten ota rohkeasti
+   meihin yhteyttä, jos haluat projektin kehittäjien arvioivan
+   projektiehdotelmasi soveltuvuutta Voikon osaksi. Kaikki Voikko-projektiin hyväksytty työ
+   tulee julkisesti saataville. Siispä esimerkiksi työnantajat voivat tarkistaa osallistumisesi
+   projektiin ilman erillisiä todistuksiakin.
+</p>
+
+<h2 id="soveltuvuus">Mitä voin tehdä Voikolla?</h2>
+<p>Suomen kielen tarkistus kirjoitus- ja kielioppivirheiden varalta, tavutus, luettavuusanalyysi,
+   asiakirjahakujen tehostaminen sekä skannattujen asiakirjojen automaattinen korjaaminen ovat
+   esimerkkejä tehtävistä, joissa Voikkoa voi käyttää.
+</p>
+<p>Voikko toimii hyvinkin erilaisissa teknisissä ympäristöissä. Sitä voi käyttää mm. Java-, C#,
+   Python-, C ja C++-kielisistä sovelluksista. Käyttöjärjestelmistä ensisijaisesti tuettuja ovat
+   Linux ja Windows, mutta Voikolla on käyttäjiä myös OS X, Solaris ja FreeBSD-järjestelmissä.
+   Laitteistoarkkitehtuuritkaan eivät tuota ongelmia: Voikko toimii niin Intel-yhteensopivissa 32- ja
+   64-bittisissä järjestelmissä kuin ARM-, MIPS- ja Sparc-tietokoneissakin.
+</p>
+<p>Jos pohditte, soveltuuko Voikko käytettäväksi projektissanne, nopeimmin asia selviää kysymällä.
+   Kysymyksen voi lähettää postituslistallamme tai luottamuksellisissa asioissa Voikon pääkehittäjälle
+   (Harri Pitkänen, hatapitk@iki.fi). Samat osoitteet käyvät, jos projektinne edetessä tarvitsette
+   apua Voikon integroinnissa sovellukseenne.
+</p>
+
+<h2 id="gpl">Millä lisenssillä Voikkoa levitetään?</h2>
+<p>Voikkoa levitetään <a href="http://www.gnu.org/licenses/gpl.html">GPL</a>:n
+   (GNU General Public License) alaisuudessa.
+   Sen avulla ohjelmien, ja tässä projektissa myös sanastojen, kirjoittajat eli
+   tekijänoikeuden haltijat antavat kenelle tahansa luvan käyttää ja tietyin ehdoin myös jakaa
+   muille tekijänoikeuslain suojaamaa materiaalia.</p>
+   <p>Kaikki Voikon osat ovat käytettävissä GPL:n version 3 (sekä mahdollisten myöhemmin
+   julkaistavien) ehdoilla. Tämän lisäksi osa projektin tuottamasta materiaalista ja ohjelmakoodista
+   on saatavilla muilla vaihtoehtoisilla lisensseillä. Näillä vaihtoehtoisilla lisensseillä
+   ei ole merkitystä Voikon käyttäjille, mutta Voikkoa käyttävien ohjelmistojen kehittäjät
+   voivat niistä hyötyä.</p>
+
+<h2 id="integrointi">Voinko liittää Voikon GPL-epäyhteensopivaan tai suljetun lähdekoodin
+   ohjelmistoon?</h2>
+<p>Libvoikon versiosta 3.5 lähtien tämä on mahdollista. Kehittäjän on tällöin käännettävä
+   libvoikko uudelleen käännösvalitsimilla, jotka rajaavat osan kirjaston toiminnoista pois
+   käytöstä. Tarkempaa tietoa asiasta löytyy libvoikon lähdekoodipaketin README-tiedostosta.
+</p>
+<p>Suosittelemme GPL-yhteensopivan lisenssin käyttöä aina kun se vain on mahdollista. Suosituimpien
+   vapaiden lisenssien joukosta löytyy moneen eri tarkoitukseen sopivia GPL-yhteensopivia
+   vaihtoehtoja, ja kaksoislisensointi on myös mahdollista.
+</p>
+
+<h2 id="lisasanastot">Voinko valmistaa ja myydä Voikon sanastoja kaupallisena palveluna?</h2>
+<p>Voit. Jos rakennat sanastosi jonkin valmiin sanaston tai morfologisen kuvauksen pohjalle,
+   sinun tulee kuitenkin noudattaa kyseisen pohjasanaston lisenssiehtoja.
+</p>
+
+<h2 id="aspell">Voikko ja aspell-, myspell- ja hunspell-yhteensopivuus</h2>
+<p>Monet erityisesti Gnome-työpöytäympäristön ohjelmat käyttävät suoraan aspellia
+   oikolukutoiminnon toteuttamiseen. Onkin usein toivottu, että Voikolle tehtäisiin
+   aspell-emulaatiokomponentti, samaan tapaan kuin tmispell-voikko tarjoaa ispell-emulaatiota.
+   Tätä ei voida helposti tehdä, koska sovellukset käyttävät aspellia ja myspelliä jaetun
+   kirjaston kautta (ispell on erillinen ohjelma). Jaettujen kirjastojen rajapintojen täysin
+   yhteensopiva kopioiminen on hyvin hankalaa, ja pienikin virhe voi rikkoa kirjastoa käyttävän
+   sovelluksen muutenkin kuin oikoluvun osalta.
+</p>
+<p>Voikko-projektin puitteissa ei ole siis aikomusta kehittää uusia emulaatiokomponentteja.
+   Työn alla oleva
+   <a href="http://freedesktop.org/wiki/Specifications/desktop-language-checking-spec">Desktop
+   Language Checking Specification</a> on suunniteltu ratkaisemaan juuri tämä ongelma, eikä
+   ole tarpeen mutkistaa tilannetta kilpailevia (ja teknisesti kestämättömiä) ratkaisuja
+   kehittämällä. Viime aikoina Gnome-ohjelmat ovat alkaneet siirtyä tämän spesifikaation pohjana
+   olevan Enchant-kirjaston käyttäjiksi. Koska Voikko toimii Enchantin kautta, Gnomen
+   versiossa 2.18 jo esimerkiksi Gedit pystyy käyttämään Voikkoa oikoluvussa.
+</p>
+
+<h2 id="muut">Minulla on kysymys, johon en löytänyt vastausta näiltä sivuilta.</h2>
+<p>Voit lähettää sähköpostitse kysymyksiä projektin postituslistalle tai henkilökohtaisesti
+projektin ylläpitäjälle <a href="mail.html">yhteystietosivullamme</a> mainituilla tavoilla.
+</p>
+
+<div style="clear:both;" />
+
+</body>
+</html>
