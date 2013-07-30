@@ -1,0 +1,191 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Voikko – General architecture</title>
+<link rel="stylesheet" type="text/css" href="stylesheets/styles.css" />
+</head>
+<body>
+
+<p class="linkback"><a href=".">← Back to Index</a></p>
+
+<h1>Voikko<br /><small>General architecture</small></h1>
+
+<p>Voikko consists of a set of separately released components that form a
+stack of layers as illustrated in the picture below.</p>
+
+<p><img src="images/architecture.png" style="border: 1px solid black" alt="General architecture of Voikko" /></p>
+
+<p>In this project we develop the components shown with blue background, and
+some of the components with yellow background:</p>
+<dl>
+  <dt>libvoikko</dt>
+  <dd>Libvoikko is the high level library that contains among other things
+   algorithms that generate spelling suggestions and perform rule based
+   hyphenation. It is also capable of caching the results of common spell
+   checking operations to improve performance. All of the grammar checking
+   is also done within libvoikko. Recent versions of libvoikko contain built
+   in implementation of Malaga parser, but earlier versions used the separate
+   Malaga library.
+   The library source contains small command line test tools and Python bindings
+   to the library.</dd>
+  <dt>Suomi-malaga</dt>
+  <dd>Suomi-malaga is a description of Finnish morphology implemented with Malaga.
+   It was designed by Hannu Väisänen for text indexing and therefore accepted many
+   common spelling mistakes and historical word forms that should be rejected when
+   doing spell checking. For this reason, Voikko originally used its own branch of
+   Suomi-malaga, with version numbers matching 0.7.X. Now the versions have
+   been merged, and Suomi-malaga 1.0 and later can be used to build a morphology
+   suitable for spell checking and text indexing from the same source package.</dd>
+  <dt>libreoffice-voikko</dt>
+  <dd>Libreoffice-voikko is an LibreOffice extension that uses Voikko to provide
+   Finnish spell checking, hyphenation and grammar checking.</dd>
+  <dt>Enchant Voikko plugin</dt>
+  <dd>Voikko provider plugin for multi-backend Enchant spell checker library
+   is included in Enchant version 1.4 and later.</dd>
+  <dt>tmispell-voikko</dt>
+  <dd>Tmispell-voikko is an ispell compatible spell checker that uses Voikko to provide
+   Finnish spell checking and falls back to real ispell for other languages. Tmispell-voikko
+   was originally written by Pauli Virtanen for the freely distributable but closed source
+   spell checker Soikko. Tmispell-voikko also contains an Enchant provider plugin for
+   Enchant version 1.3. Tmispell-voikko is deprecated and not actively developed
+   anymore. Developers using ispell to add spell checking capability in their
+   applications should consider switching to Enchant instead.</dd>
+  <dt>Joukahainen</dt>
+  <dd>Joukahainen is our web application used to maintain the vocabulary. Joukahainen is
+   designed to store and provide vocabulary data in an application independent format which
+   should make it easier to use and experiment with the data outside the Voikko project.</dd>
+</dl>
+<p>Upstream version of <a href="http://home.arcor.de/bjoern-beutel/malaga/">Malaga</a> by
+Björn Beutel is used to compile and debug Suomi-malaga. The Malaga implementation
+within libvoikko is also based on original Malaga, but it has been modified to make
+it more suitable for our purposes.</p>
+
+<h2>The reasons for using malaga instead of Hunspell</h2>
+<p>This project started in late 2005 under the name Hunspell-fi, with an aim to create
+Finnish vocabulary and affix files for Hunspell. The Hunspell based implementation was developed
+roughly six months, and there were no serious problems but it was also evident that the
+work progressed rather slowly. In early 2006 Hannu Väisänen published Suomi-malaga, which
+contained a vocabulary that was (depending on how one defines "word") roughly ten times
+larger than the Hunspell-fi vocabulary at that time. Additionally the Hunspell-fi implementation
+did not support compound words and only a few derived word forms, which were both supported
+by Suomi-malaga.</p>
+<p>Suomi-malaga had a lot of correctness problems from the spellchecking point of
+view that did not exist in our Finnish Hunspell dictionary, but with the limited resources
+we had at that time we really could not afford ignoring the huge amount of work that had
+gone into producing Suomi-malaga. Using the vocabulary of Suomi-malaga in Hunspell was not
+possible due to different semantics of word classification between these projects.
+It would be somewhat easier now that the data has been moved to Joukahainen and the classification
+has been modernised.</p>
+<p>There are still some problems with the malaga based approach that might not exist in
+Hunspell. Malaga is not thread safe (this is going to be fixed within libvoikko), and the performance is sufficient but not great.
+Writing an accurate Finnish morphology with malaga is not easy, but there are currently
+only a few cases (mostly involving inflection within compound words) where no satisfactory
+solution has been found yet. However it is unlikely that Hunspell is any better in this
+regard. The COMPOUNDRULE patterns in Hunspell would make some things easier that are
+somewhat complicated to do with Malaga, but there are other major limitations
+(or at least there have been, some may have been fixed in recent versions) in Hunspell that
+should be considered:</p>
+<ul>
+<li>Hunspell only supports two consecutive suffixes for any word. This is of course a
+major improvement compared to ispell or myspell that supported only one. But in Finnish
+it is common to have three or more suffixes in a word. This requires merging of
+suffixes and in practice some sort of tool has to be created to generate these merged
+forms (apparently this method has been used in Hungarian Hunspell dictionaries, so it
+is possible). This makes it is impossible to write Hunspell affix files manually and
+adds another layer of complexity to the system. Of course having such tool and storing
+morphological rules in an application independent format would help converting to other
+formats later, which would be a good thing.</li>
+<li>Hunspell has methods for allowing or forbidding certain inflected or derived forms
+in compounds. But binary allow/forbid is not enough, we need a method for specifying
+compound rules by word class and then specifying that certain derivational suffixes
+cause the word to belong to a different class. And this must work recursively
+(derived words can be derived too) for at least three levels. Additionally words can
+be inflected (in a restricted way) inside compounds too, so this must be supported
+as well.</li>
+<li>Hunspell seems to need a lot more memory than malaga, especially when multiple
+instances are used on the same machine. The total running set size for libvoikko and its
+dictionary is about 9 megabytes shared + 0.5 megabytes data per running instance.
+Hunspell (Hungarian) consumes 1 megabytes shared + 15 megabytes data per instance.
+This would still be acceptable for single user systems, but in a classroom LTSP
+server with 20 pupils using OpenOffice.org the total memory use would be
+about 20 megabytes with Voikko and 300 megabytes with Hunspell. If they used
+Firefox with spell checking extension at the same time, the numbers would become
+30 megabytes for Voikko and 600 megabytes for Hunspell. Using precompiled binary
+dictionaries and mmap, or a spelling server would fix this problem in Hunspell, but the
+server solution would cause additional security and maintenance issues for the
+administrator.</li>
+<li>Voikko is not just a spell checking library. It currently provides grammar checker,
+hyphenator and string tokeniser as well. Additionally Voikko has many extra options
+related to spell checking not found in Hunspell, such as special suggestion mode
+for fixing errors introduced during optical character recognition.
+Some of these would make sense in
+Hunspell as well and could be ported there if needed. But other features
+(such as hyphenator and grammar checker) would need to be designed differently to make them
+language independent for Hunspell. Totally separating hyphenator and spell checker
+(as is currently done in most free tools except Voikko) does
+not make sense, since both rely on morphological analysis for their operation.<br />
+Hunspell has morphological analysis features too, but they may not be on
+the same level of stability as the rest of the library. Testing
+version 1.2.2 still crashes when using the analyze command, whereas malaga
+has not had a single crash bug found from in its LAG parser during the past
+three years we have been using it.</li>
+</ul>
+<p>All of the problems above could definitely be solved within Hunspell, but
+migh require a lot of work.
+Compromising quality just to become compatible with Hunspell is not an option,
+because Finnish people have come to expect really good results from their
+spell checkers (we have had advanced compound word checking in commercial text
+editors for well over ten years).</p>
+<p>Currently work is going on to port the Finnish Malaga morphology into finite state form.
+Voikko already supports some finite state backends for various languages. Once all of
+our supported formats are finite state and compatible with Hunspell licensing it
+will be possible to consider merging the code.</p>
+
+<h2>How to distribute Voikko</h2>
+
+<p>The core parts of Voikko are all hidden behind the public interface of libvoikko,
+which is designed to be distributed as a shared library and used by any number of
+applications in the operating system. Our goal is to get the software shipped
+as a part of various Linux distributions so that Finnish writing aids would work
+out of the box for anyone who needs them. In the best case users would not even
+know that they are using Voikko. The source packages released by us should be suitable
+for easy packaging in different distributions (if not, tell us and we try to improve
+them). Just make sure that you package a compatible set of modules.</p>
+
+<p>Note that currently the interface between libvoikko and Suomi-malaga is not
+considered to be fully stable, although it has remained unchanged for quite long
+time. We still have some requirements left that cannot be implemented without
+changing this interface. We will do our best to make libvoikko handle missing
+or incorrect versions of Suomi-malaga lexicon files as gracefully as possible.
+We however think that binary packages of libvoikko should have a dependency on
+binary packge of Suomi-malaga (commonly called voikko-fi) since the library
+is essentially useless without it.</p>
+
+<p>The suggestion above implies that the Enchant provider plugin should not be
+distributed in the same binary package with Enchant main library, otherwise
+the dependency chain will drag Suomi-malaga binaries (the largest component of
+Voikko) on almost every Linux desktop on the planet regardless of the installation
+language. Luckily the provider plugin can be easily shipped in a separate
+package, since Enchant does runtime detection and loading of provider plugins
+with dlopen. This way no Voikko specific material gets installed on systems where
+Finnish spell checking is not needed.</p>
+
+<p>We do not have official reference packaging available, but Fedora packages of Voikko
+follow the guidelines above and could be used as a starting point for packages
+for other distributions.</p>
+
+<p>To make the application integration easier, it would be preferable to have an
+unified standard interface between linguistic tools and applications using them.
+The proposed
+<a href="http://freedesktop.org/wiki/Specifications/desktop-language-checking-spec">freedesktop.org
+Desktop Language Checking Spec</a> is a step to this direction.</p>
+<p>For Windows and OS X the packaging may have to be done a bit differently, as neither
+of them natively supports software packaged this way. However in OS X one can use similar
+third party packaging systems such as Fink and MacPorts.</p>
+
+<div style="clear:both;" />
+
+</body>
+</html>

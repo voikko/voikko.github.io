@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Voikko – Installation from source on Linux</title>
+<link rel="stylesheet" type="text/css" href="stylesheets/styles.css" />
+</head>
+<body class="wide">
+
+<p class="linkback"><a href=".">← Back to Index</a></p>
+
+<h1>Voikko<br /><small>Installation from source on Linux</small></h1>
+
+<p>These instructions are valid for the latest stable releases only.</p>
+<p>You will need the following programs:</p>
+<ul>
+<li><a href="http://home.arcor.de/bjoern-beutel/malaga/">Malaga</a> (version 7.12 or later)</li>
+
+<li>Suomi-Malaga</li>
+<li>libvoikko</li>
+<li>for LibreOffice support, libreoffice-voikko</li>
+<li>for ispell emulation, tmispell-voikko.</li>
+</ul>
+<p>You will also need C and C++ compilers, Python and GNU make.
+Malaga may have additional library dependecies and openoffice.org-voikko will require the LibreOffice SDK
+for compilation.</p>
+<h2>Quick installation instructions</h2>
+<p>In the following Malaga and libvoikko will be installed to /usr/local/voikko and Suomi-Malaga (the Finnish
+"dictionaries") to /usr/local/voikkodict. You may however choose the
+installation prefixes as you wish.</p>
+
+<ol>
+<li>Install Malaga. This means unpacking the source and running
+<kbd>./configure&nbsp;--prefix=/usr/local/voikko;&nbsp;make</kbd> in the source directory,
+followed by <kbd>make&nbsp;install</kbd> as root.</li>
+
+<li>Install Suomi-Malaga: Unpack the sources, run
+<kbd>PATH=/usr/local/voikko/bin:$PATH&nbsp;make&nbsp;voikko</kbd> in the source directory and then as root
+<kbd>make&nbsp;voikko-install&nbsp;DESTDIR=/usr/local/voikkodict</kbd>.</li>
+
+<li>Install libvoikko. Unpack, go to the source directory and run
+<kbd>./configure&nbsp;--prefix=/usr/local/voikko&nbsp;--with-dictionary-path=/usr/local/voikkodict;&nbsp;make</kbd> and then
+<kbd>make&nbsp;install</kbd> as root. You can now check your installation by running the command
+<kbd>/usr/local/voikko/bin/voikkospell</kbd> and typing in words, one per line. The program will
+prefix correct words with "C:" and incorrect words with "W:".</li>
+
+<li>Edit the file /etc/ld.so.conf by adding a line containing the directory of libvoikko.so
+(in this example /usr/local/voikko/lib). Then run <kbd>ldconfig</kbd> as root. This step is
+required mainly for the LibreOffice UNO package to work, and it is not necessary if you install
+libvoikko using a deb/rpm package.</li>
+
+<li>Build openoffice.org-voikko by following the instructions in the source package.</li>
+
+<li><a class="suomi" href="ooo-kielityokalut.html">Install openoffice.org-voikko.</a></li>
+
+<li>Install tmispell-voikko. Unpack, run
+<kbd>./configure&nbsp;--prefix=/usr/local/voikko;&nbsp;make</kbd> and as root <kbd>make&nbsp;install</kbd>.
+You should also create directory /usr/local/voikko/etc and copy the provided tmispell.conf.example
+to that directory.</li>
+
+<li>If you want to use tmispell as a replacement for ispell (for example in KDE), do the following:
+<ol><li>Install ispell.</li>
+    <li>Rename the ispell binary /usr/bin/ispell to ispell.real. On Debian, you can do this by running
+    (as root) <kbd>dpkg-divert&nbsp;--divert&nbsp;/usr/bin/ispell.real&nbsp;--rename&nbsp;/usr/bin/ispell</kbd>.</li>
+    <li>Add a symbolic link /usr/bin/ispell -> /usr/local/voikko/bin/tmispell.</li>
+    <li>Create two empty files:
+    <kbd>touch&nbsp;/usr/lib/ispell/suomi.hash&nbsp;/usr/lib/ispell/suomi.aff</kbd></li>
+     <li>Go to the KDE Control Center and change the spellchecker settings to use ispell. Dictionary
+     should be "suomi" and encoding "UTF-8".</li></ol></li>
+</ol>
+
+<div style="clear:both;" />
+
+</body>
+</html>
