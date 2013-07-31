@@ -83,33 +83,26 @@ taulukkolaskenta- tai kuvankäsittelyohjelmia.</p>
 
 <p>Webvoikossa tällainen sanasto on jo käytössä, mutta omalla koneella oikolukua
 tekevien on koottava se itse. Tämän voi tehdä Suomi-malagan kehitysversiosta
-asentamalla ohjelmapaketit <tt>subversion</tt> ja <tt>malaga-bin</tt> ja antamalla
+asentamalla ohjelmapaketit <tt>git</tt> ja <tt>malaga-bin</tt> ja antamalla
 seuraavat komennot:</p>
 
 <pre>
 mkdir -p ~/po-oikoluku
 cd ~/po-oikoluku
-svn co https://voikko.svn.sourceforge.net/svnroot/voikko/trunk/suomimalaga suomimalaga
-cd suomimalaga
-make voikko GENLEX_OPTS="--extra-usage=it,science" \
+git clone https://github.com/voikko/corevoikko
+cd corevoikko/suomimalaga
+make voikko-install DESTDIR=. GENLEX_OPTS="--extra-usage=it,science" \
  EXTRA_LEX="vocabulary/erikoisalat/atk-lyhenteet.lex vocabulary/erikoisalat/po-oikoluku.lex"
 </pre>
 
-<p>Jos käytössäsi on libvoikko 1.6 tai uudempi, erikoissanaston saa käyttöön
-asettamalla ympäristömuuttujan VOIKKO_DICTIONARY_PATH arvoksi polun siihen
-hakemistoon, jossa sanasto on. Jos esimerkiksi käyttää Pootlea Konquerorin
+<p>Erikoissanaston saa käyttöön
+asettamalla ympäristömuuttujan VOIKKO_DICTIONARY_PATH arvoksi polun
+suomimalaga-hakemistoon. Jos esimerkiksi käyttää Pootlea Konquerorin
 kautta, voi Konquerorin käynnistää komennolla</p>
 
 <pre>
-VOIKKO_DICTIONARY_PATH=~/po-oikoluku/suomimalaga/voikko konqueror
+VOIKKO_DICTIONARY_PATH=~/po-oikoluku/corevoikko/suomimalaga konqueror
 </pre>
-
-<p>Versiota 1.6 vanhempaa libvoikkoa käytettäessä ympäristömuuttuja ei toimi, vaan
-oikolukusanaston käyttöönotto tapahtuu luomalla symbolinen linkki komennolla
-<kbd>ln&nbsp;-s&nbsp;~/po-oikoluku/suomimalaga/voikko&nbsp;~/.voikko</kbd> Linkki
-kannattaa poistaa po-tiedostojen oikoluvun jälkeen, sillä muutoin tätä erikoissanastoa
-käytetään myös muuhun Voikon avulla tehtävään oikolukuun, mikä ei välttämättä
-ole toivottavaa.</p>
 
 <p><strong>Huom:</strong> Erikoissanaston käyttöönotto yllä kuvatulla tavalla
 ei toimi Firefoxissa, jos siihen on asennettu oikolukulisäosa Mozillan
