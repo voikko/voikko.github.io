@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Voikko – Using in Java applications</title>
+<link rel="stylesheet" type="text/css" href="stylesheets/styles.css" />
+</head>
+<body>
+
+<p class="linkback"><a href=".">← Back to Index</a></p>
+
+<h1>Voikko<br /><small>Using in Java applications</small></h1>
+
+<h2>Installing the native library</h2>
+<p style="font-size:85%; text-align:right">... or how to resolve <kbd>Could not load the native component of libvoikko.</kbd></p>
+
+<p>You need to have the native libvoikko library available in a place where the OS specific library loading mechanism (<kbd>System.loadLibrary</kbd> in fact) will find it.
+Most modern Linux distributions contain the <kbd>libvoikko</kbd> package; installing that should be sufficient.
+On Windows you should place <kbd>libvoikko-1.dll</kbd> in one of the directories within the PATH environment variable.
+<a href="http://www.puimula.org/htp/testing/voikko-sdk/win-crossbuild/">Here you can download the library for Windows</a> (choose 32 or 64 bit version according to
+your Java VM).</p>
+
+<h2>Installing suitable dictionary files</h2>
+<p style="font-size:85%; text-align:right">... or how to resolve <kbd>org.puimula.libvoikko.VoikkoException: Specified dictionary variant was not found</kbd></p>
+<p>You need to have a dictionary installed that is compatible with your version of libvoikko and matches the language (and language variant) you specified as
+a parameter in the constructor for Voikko object. <a href="http://www.puimula.org/htp/testing/voikko-snapshot/">Here you can download various dictionary packages
+for Finnish</a>. The dictionary packages need to be unzipped but the directory structure within the packages must be preserved.</p>
+<p>On Linux you can unpack the dictionaries under <kbd>/etc/voikko</kbd> or <kbd>$HOME/.voikko</kbd>. On Windows these default locations must be set through
+the system registry. Another, more portable option is to choose an application specific installation directory for the dictionaries and use the two parameter
+constructor of Voikko to specify that directory.</p>
+
+<div style="clear:both;" />
+
+</body>
+</html>
