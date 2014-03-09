@@ -19,6 +19,24 @@ the source packages, and for Suomi-malaga in the Git revision history.
 The releases are listed in reverse chronological order.</p>
 
 
+<h2>Suomi-malaga 1.16 (2014-03-09)</h2>
+<p>This version requires malaga 7.8 or later for building. For use with Voikko, libvoikko
+2.2 or later is needed. After version 1.15 the following notable changes
+have been made:</p>
+<ul>
+<li>New words have been added and various bugs have been fixed.</li>
+<li>The VFST morphology for Finnish is now nearly complete and already usable for many purposes.</li>
+<li>Syntax of WORDBASES attribute has been changed slightly. It now exposes the internal structure
+of pre-composed compound words. In previous versions this information has only been present in the
+STRUCTURE attribute.<br />
+This change has no effect on applications that use the standard dictionary since
+it does not provide WORDBASES at all. Applications that use custom dictionaries and parse the WORDBASES
+attribute may need to be updated to handle the newly added boundary markers. The added boundary marker
+can be observed by analysing the word "amerikankurmitsa":
+<kbd>WORDBASES=+amerikankurmitsa(amerikan=kurmitsa)</kbd> ("=" was not present in the earlier releases).</li>
+</ul>
+
+
 <h2>Libreoffice-voikko 4.0 (2013-12-06)</h2>
 <p>This version requires libvoikko 3.7 or later. It works with LibreOffice 4.1 and later.
 Notable changes in this release:</p>
@@ -28,6 +46,7 @@ Notable changes in this release:</p>
 <li>Added support for grammar checkers and hyphenators for languages other than Finnish.</li>
 <li>Add MPL 2.0 as an alternative license for the code.</li>
 </ul>
+
 
 <h2>Libvoikko 3.7 (2013-11-25)</h2>
 <p>This version requires Suomi-malaga 1.4 or later. Some features require Suomi-malaga 1.12
