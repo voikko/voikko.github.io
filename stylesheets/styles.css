@@ -57,6 +57,7 @@ a.downloadlink {
   padding: 3px;
   margin-right: 1em;
   border-radius: 5px;
+  text-align: center;
 }
 
 p, li, dt, dd {
