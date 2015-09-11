@@ -19,6 +19,53 @@ the source packages, and for Suomi-malaga in the Git revision history.
 The releases are listed in reverse chronological order.</p>
 
 
+<h2>Libvoikko 3.8 (2015-09-11)</h2>
+<p>This version requires Suomi-malaga 1.4 or later. Some features require Suomi-malaga 1.12
+or later. After version 3.7.1 the following changes have been made:</p>
+<ul>
+<li>Dictionary path specified at compile time, through VOIKKO_DICTIONARY_PATH or
+  through Windows registry keys can now contain more than one directory.
+  Separator character is ";" on Windows and ":" on other platforms (so this
+  works now just as regular PATH environment variable).</li>
+<li>BCP 47 scripts subtags are now supported:
+  <ul>
+  <li>Four letter script subtag can now be appended when requesting a dictionary
+    for specific language. This should only be used when more than one script
+    is actually used for a language since libvoikko does not know what the
+    "default" script for any specific language is.</li>
+  <li>New API function voikko_dict_script has been added.</li>
+  <li>Script attribute has also been added to Python and Java Dictionary objects</li>
+  </ul></li>
+<li>HFST backend code has been re-licensed under GPL/LGPL/MPL (hfstospell itself
+  is under the Apache license).</li>
+<li>Lots of improvements related to VFST format:
+  <ul>
+  <li>A new weighted variant of VFST format has been added. This variant also
+    supports larger transducers with more symbols and states than the
+    unweighted variant.</li>
+  <li>Language independent "simple" VFST spellers now use weighted transducers
+    and support spelling suggestions that are sorted using the weight
+    information from the transducers. Finnish VFST format (format 5) continues
+    to use unweighted transducer format.</li>
+  <li>Finnish VFST format now reads grammar checker autocorrect data from a
+    transducer instead of using built-in autocorrect data shipped with
+    libvoikko. The autocorrect data within libvoikko is still included if
+    Malaga backend is enabled but it is only used for grammar checking with
+    Malaga dictionaries (format 2).</li>
+  <li>Support for WORDIDS and WORDBASES attributes has been added to Finnish
+    VFST format.</li>
+  <li>Dictionary format 5 has reached feature parity with format 2 and is now
+    good enough to be used for beta testing.</li>
+  </ul></li>
+<li>Various small improvements have been made in Finnish grammar checker and
+  morphological analysis.</li>
+<li>Extended support for character sets affecting at least Plains Cree written
+  in Canadian syllabics, Skolt Sami and Romanian.</li>
+<li>Fixed a crash that appeared when the library was used within 64 bit Firefox
+  on Windows.</li>
+</ul>
+
+
 <h2>Suomi-malaga 1.18 (2015-01-28)</h2>
 <p>This version requires malaga 7.8 or later for building. For use with Voikko, libvoikko
 2.2 or later is needed. After version 1.17 the following notable changes
