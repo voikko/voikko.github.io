@@ -19,6 +19,24 @@ the source packages, and for Suomi-malaga in the Git revision history.
 The releases are listed in reverse chronological order.</p>
 
 
+<h2>Mozvoikko 2.2 (2015-09-14)</h2>
+<p>This version requires libvoikko 3.1 or later. It is compatible with Firefox versions 4.0
+or later and Thunderbird 5.0 or later. Significant changes in this release:</p>
+<ul>
+<li>All languages known to Voikko are supported for spell checking, not
+   just Finnish.</li>
+<li>Mechanism for loading shared library dependencies has been added. If
+   libvoikko cannot be loaded the extension will try to load the listed
+   dependencies and then attempt to load libvoikko again. This makes it
+   possible to deliver hfstospell and its dependencies as shared libraries.</li>
+<li>Separete README.user to be included in the xpi extension. Plain README
+   caused confusion since it is targeted to developers.</li>
+<li>In addition to the traditional source code release the extension is provided as an
+   XPI extension signed by Mozilla. This can be used to satisfy the new extension
+   signature requirement in the upcoming Firefox versions. No binary components are
+   included in this signed package, they must be provided by the operating system.</li>
+</ul>
+
 <h2>Libvoikko 3.8 (2015-09-11)</h2>
 <p>This version requires Suomi-malaga 1.4 or later. Some features require Suomi-malaga 1.12
 or later. After version 3.7.1 the following changes have been made:</p>
