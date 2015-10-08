@@ -27,7 +27,7 @@ please note that we are rather careful with the copyright issues related to dict
 lists. You should ask for premission on our mailing list before using any external sources other than
 those already listed in corevoikko/suomimalaga/CONTRIBUTORS.</p>
 <p>We use UTF-8 encoding in all parts of our development environment, web site and applications
-so please make sure that your tools can deal with it. Especially Subversion client and text
+so please make sure that your tools can deal with it. Especially Git client and text
 editors should be run under an UTF-8 locale. Some non-ASCII characters are used in Finnish, and
 they may be present in file names as well. It is perfectly possible to <em>use</em> Voikko in an
 environment where some other encoding is used. If you prefer to write Finnish with a fixed 8 bit
@@ -46,15 +46,18 @@ Additional premissions, dual licensing or use of various more permissive license
 (LGPL, GPL+GFDL, BSD, MPL, MIT) are allowed too, as long as it will be possible to distribute
 the work under "GPL v3 or later".</p>
 
-<p>Additionally material under some subdirectories of our projects must be available under
-GPL v2. These directories are:</p>
+<p>Material under some subdirectories of our projects must be available under
+MPL v2. These directories are:</p>
+<ul>
+<li>corevoikko/libvoikko (not required for backends that can be disabled)</li>
+<li>libreoffice-voikko</li>
+</ul>
+
+<p>Material under some subdirectories of our projects must be available under
+"GPL v2 or later". These directories are:</p>
 <ul>
 <li>corevoikko/data</li>
-<li>corevoikko/libvoikko/data</li>
-<li>corevoikko/libvoikko/python</li>
-<li>corevoikko/libvoikko/src</li>
 <li>corevoikko/suomimalaga</li>
-<li>corevoikko/tools/pylib</li>
 <li>mozvoikko</li>
 </ul>
 
@@ -99,7 +102,7 @@ behaviour.</p>
 
 <p>We aim to store only original source code in our repository. Do not check in anything
 that is generated (program binaries, source packages, pdf files) or is maintained in
-another revision control system (glib sources) without asking permission from
+another revision control system without asking permission from
 the mailing list.</p>
 
 <div style="clear:both;" />
