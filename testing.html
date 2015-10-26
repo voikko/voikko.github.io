@@ -41,23 +41,23 @@ komennoilla:</p>
 mkdir ~/git
 git clone git://github.com/voikko/corevoikko.git ~/git/corevoikko
 mkdir -p ~/.voikko/2
-ln -s ~/git/corevoikko/suomimalaga/voikko ~/.voikko/2/mor-standard
+ln -s ~/git/corevoikko/voikko-fi/voikko ~/.voikko/2/mor-standard
 </pre>
 </li>
 
-<li><p>Käännä Suomi-Malaga komennolla:</p>
+<li><p>Käännä voikko-fi komennolla:</p>
 <pre>
-cd ~/git/corevoikko/suomimalaga
+cd ~/git/corevoikko/voikko-fi
 make voikko
 </pre>
 </li>
 
-<li><p>Mikäli kääntämisessä ei tapahtunut virheitä, Suomi-Malagan kehitysversio
+<li><p>Mikäli kääntämisessä ei tapahtunut virheitä, voikko-fi:n kehitysversio
 on nyt käyttövalmis. Libvoikko käyttää automaattisesti kotihakemistossa olevaa
-Suomi-Malagaa, jos sellainen on olemassa. Jos myöhemmin haluat päivittää
+voikko-fi:tä, jos sellainen on olemassa. Jos myöhemmin haluat päivittää
 uudempaan kehitysversioon, se tapahtuu seuraavilla komennoilla:</p>
 <pre>
-cd ~/git/corevoikko/suomimalaga
+cd ~/git/corevoikko/voikko-fi
 git pull -r
 make voikko
 </pre>
@@ -82,7 +82,7 @@ esimerkkejä:</p>
 <li><p>Asennuspaketit uusimmista Voikon kehitysversioista käännetään
 seuraavilla komennoilla:</p>
 <pre>
-makevoikkodeb suomimalaga
+makevoikkodeb voikko-fi
 makevoikkodeb libvoikko
 makevoikkodeb ooovoikko
 makevoikkodeb tmispell

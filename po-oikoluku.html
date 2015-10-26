@@ -90,18 +90,18 @@ seuraavat komennot:</p>
 mkdir -p ~/po-oikoluku
 cd ~/po-oikoluku
 git clone https://github.com/voikko/corevoikko
-cd corevoikko/suomimalaga
+cd corevoikko/voikko-fi
 make voikko-install DESTDIR=. GENLEX_OPTS="--extra-usage=it,science" \
  EXTRA_LEX="vocabulary/erikoisalat/atk-lyhenteet.lex vocabulary/erikoisalat/po-oikoluku.lex"
 </pre>
 
 <p>Erikoissanaston saa käyttöön
 asettamalla ympäristömuuttujan VOIKKO_DICTIONARY_PATH arvoksi polun
-suomimalaga-hakemistoon. Jos esimerkiksi käyttää Pootlea Konquerorin
+voikko-fi-hakemistoon. Jos esimerkiksi käyttää Pootlea Konquerorin
 kautta, voi Konquerorin käynnistää komennolla</p>
 
 <pre>
-VOIKKO_DICTIONARY_PATH=~/po-oikoluku/corevoikko/suomimalaga konqueror
+VOIKKO_DICTIONARY_PATH=~/po-oikoluku/corevoikko/voikko-fi konqueror
 </pre>
 
 <p><strong>Huom:</strong> Erikoissanaston käyttöönotto yllä kuvatulla tavalla
