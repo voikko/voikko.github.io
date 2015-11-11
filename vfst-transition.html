@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Voikko – Transitioning the Finnish dictionary from Malaga to VFST</title>
+<link rel="stylesheet" type="text/css" href="stylesheets/styles.css" />
+</head>
+<body>
+
+<p class="linkback"><a href=".">← Back to Index</a></p>
+
+<h1>Voikko<br /><small>Transitioning the Finnish dictionary from Malaga to VFST</small></h1>
+
+<p>
+The upcoming release of libvoikko 4.0 and voikko-fi 2.0 will change the default dictionary
+format for Finnish language. Along with this transition some things will change. This
+document provides detailed information about the change and its effects on developers,
+software distributors and end users.
+</p>
+
+<p>
+This document will be constantly updated as we work on finalizing the release. If you
+are interested in the latest changes please look at
+<a href="https://github.com/voikko/voikko.github.io/commits/master/vfst-transition.html">GitHub change history</a>.
+</p>
+
+<h2>History, rationale and goals</h2>
+
+<p>
+The first version of Voikko consisting of libvoikko 1.0 and Suomi-malaga 0.7.1 was released
+in August 2006 to support spell checking and hyphenation for Finnish language. Grammar checking
+was introduced during 2008 (version 2.0). Slight changes were made in the dictionary format
+to add support for morphological analysis during 2009 (version 2.2).
+</p>
+<p>
+Since those days all of
+these features have seen gradual improvements but the limits of Malaga grammar formalism
+have already been reached. There are no reasonable ways of making the Malaga interpreter
+any faster than it already is and generating Finnish word forms is not possible either
+which has made many interesting applications such as inflecting thesaurus impossible.
+</p>
+<p>
+Re-writing the morphology in VFST (Varissuo Finite State Transducer) format was started in 2012.
+The work has been done in parallel with maintenance work on Malaga dictionary. Indeed many
+useful fixes that have been committed during the past three years to our Malaga dictionary have
+resulted from this work. The primary goals for the VFST dictionary format were the following:
+</p>
+<ul>
+<li>The format should be usable for algorithms that generate word forms.</li>
+<li>Performance of existing functionality (spell checking, hyphenation and morphological analysis)
+should increase.</li>
+<li>The tools needed for compiling the dictionary should be easily available and actively maintained
+(the Malaga software has not been developed since about 2010).</li>
+<li>The dictionary format should be platform independent (the Malaga format depends on platform
+endianess).
+<li>Regressions in features or memory use are not allowed.</li>
+</ul>
+
+<h2>The benefits of VFST dictionary format</h2>
+
+<p>
+The initial version of Voikko with VFST dictionaries fulfills the goals mentioned above. Without loss
+of functionality it offers the following improvements over Malaga format:</p>
+
+<ul>
+<li>The tools needed for building the dictionary are actively maintained. <kbd>voikkovfstc</kbd> is
+developed as a part of libvoikko and <kbd>foma</kbd> has had its latest release in 2015. Additionally
+it is relatively easy to replace Foma with another Xerox lexc compatible compiler if necessary.</li>
+<li>The VFST dictionary format is platform independent. The dictionary data can be directly
+mapped into process memory on little endian architectures. For the (rare) cases where this optimisation
+is needed on a big endian system <kbd>voikkovfstc</kbd> can also produce big endian optimised dictionaries.</li>
+<li>Processing speed using the VFST format is about twice as fast as it was with Malaga format. Additionally
+there are some unexplored optimisation opportunities that may lead to additional improvements in future releases.</li>
+<li>The size of the dictionary file on disc and memory is roughly half of an equivalent Malaga dictionary.</li>
+<li>It is possible to transform the dictionary programmatically using regular expression operations.</li>
+<li>The format is suitable for word form generation and some specialised uses in grammar checking.</li>
+</ul>
+
+<h2>Programs using libvoikko do not require any changes</h2>
+
+<p>
+Programs that use libvoikko through C, Java, Python or .Net API do not need to be modified to use
+the new dictionary format. Spell checking, hyphenation and grammar checker APIs will work as before.
+Morphological analysis with VFST will produce all of the attributes that were produced with Malaga.
+However the following changes may affect some programs:
+</p>
+<ul>
+<li>The baseline of attributes that are expected to be returned in all dictionary configurations
+will include the following attributes that were not part of the baseline Malaga dictionary:
+<ul>
+<li>TENSE</li>
+<li>KYSYMYSLIITE</li>
+<li>POSSESSIVE</li>
+</ul>
+Programs that behave badly when additional unknown attributes are introduced may need to be fixed not
+to make such assumptions.
+</li>
+<li>BASEFORM is now produced in the standard dictionary configuration but may still be omitted in
+dictionaries optimised for low memory use.</li>
+<li>WORDBASES (and WORDIDS) will return more detailed chain of derivation for some words. For example
+WORDBASES for word <em>kanavoitumisen</em> is now <strong>+kanavoi(kanavoida)+tua(+tua)</strong> instead of
+<strong>+kanavoitua(kanavoida)</strong>.</li>
+</ul>
+
+<h2>Default build configuration of libvoikko has changed</h2>
+
+<p>
+The default build configuration of libvoikko 4.0 has been changed. Those who build libvoikko from source
+code may need to adjust their configurations:
+</p>
+<ul>
+<li>Previously only Malaga backend (dictionary format 2) was enabled by default. Now we enable HFST (dictionary format 3)
+and Finnish VFST (dictionary format 5) instead.
+<ul>
+<li>Malaga (dictionary format 2) is still available and can be enabled with <kbd>--enable-malaga</kbd></li>
+<li>HFST (dictionary format 3) requires the hfstospell library. It can be disabled with <kbd>--disable-hfst</kbd></li>
+<li>Finnish VFST (dictionary format 5) can be disabled with <kbd>--disable-vfst</kbd></li>
+<li>VFST compiler tool <kbd>voikkovfstc</kbd> is now built by default. It can be disabled with <kbd>--disable-buildtools</kbd></li>
+<li>Some VFST related features are still experimental. These are still disabled by default but the switch to enable them has been renamed.
+It is now called <kbd>--enable-expvfst</kbd></li>
+</ul>
+<li>The default dictionary path used as a last resort location to look for dictionary files is no longer set by default.
+This choice has been made as such default path was really ever useful on Unix systems. It is still recommended to set a default dictionary
+path on systems where it is useful: <kbd>--with-dictionary-path=/usr/lib/voikko</kbd></li>
+<li>In the default build configuration it is now possible to use and distribute the libvoikko library under MPL 1.1 / GPL 2+ / LGPL 2.1+ tri-license.
+This license offers some additional flexibility over plain "GPL 2 or later" license that was required by the Malaga backend. The new license is
+the same as the one used by Hunspell spell checker library. Please note that the Finnish VFST dictionary is still only available under the GPL license.</li>
+</ul>
+
+<div style="clear:both;" />
+
+</body>
+</html>
