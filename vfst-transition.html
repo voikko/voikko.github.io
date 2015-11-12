@@ -18,9 +18,11 @@ document provides detailed information about the change and its effects on devel
 software distributors and end users.
 </p>
 
-<p>
-This document will be constantly updated as we work on finalizing the release. If you
-are interested in the latest changes please look at
+<p style="font-size: 110%">
+Please note that libvoikko 4.0 and voikko-fi 2.0 have not yet been released! This document
+has been published to provide early information to those interested in or affected by these changes.
+This document will be constantly updated as we work on finalizing the release which is expected
+to happen in December 2015 or January 2016. If you are interested in the latest changes please look at
 <a href="https://github.com/voikko/voikko.github.io/commits/master/vfst-transition.html">GitHub change history</a>.
 </p>
 
@@ -29,8 +31,8 @@ are interested in the latest changes please look at
 <p>
 The first version of Voikko consisting of libvoikko 1.0 and Suomi-malaga 0.7.1 was released
 in August 2006 to support spell checking and hyphenation for Finnish language. Grammar checking
-was introduced during 2008 (version 2.0). Slight changes were made in the dictionary format
-to add support for morphological analysis during 2009 (version 2.2).
+was introduced during 2008 (libvoikko 2.0). Slight changes were made in the dictionary format
+to add support for morphological analysis during 2009 (libvoikko 2.2).
 </p>
 <p>
 Since those days all of
@@ -50,7 +52,7 @@ resulted from this work. The primary goals for the VFST dictionary format were t
 <li>Performance of existing functionality (spell checking, hyphenation and morphological analysis)
 should increase.</li>
 <li>The tools needed for compiling the dictionary should be easily available and actively maintained
-(the Malaga software has not been developed since about 2010).</li>
+(the Malaga software has not been developed since about 2008).</li>
 <li>The dictionary format should be platform independent (the Malaga format depends on platform
 endianess).
 <li>Regressions in features or memory use are not allowed.</li>
@@ -99,7 +101,7 @@ to make such assumptions.
 dictionaries optimised for low memory use.</li>
 <li>WORDBASES (and WORDIDS) will return more detailed chain of derivation for some words. For example
 WORDBASES for word <em>kanavoitumisen</em> is now <strong>+kanavoi(kanavoida)+tua(+tua)</strong> instead of
-<strong>+kanavoitua(kanavoida)</strong>.</li>
+<strong>+kanavoitua(kanavoida)</strong>. The syntax of these attributes is still the same as before.</li>
 </ul>
 
 <h2>Default build configuration of libvoikko has changed</h2>
@@ -126,6 +128,43 @@ path on systems where it is useful: <kbd>--with-dictionary-path=/usr/lib/voikko<
 This license offers some additional flexibility over plain "GPL 2 or later" license that was required by the Malaga backend. The new license is
 the same as the one used by Hunspell spell checker library. Please note that the Finnish VFST dictionary is still only available under the GPL license.</li>
 </ul>
+
+<h2>Suomi-malaga is now voikko-fi</h2>
+
+<p>
+The Finnish dictionary source package suomi-malaga has been renamed to voikko-fi. Voikko-fi can be used to
+build both Malaga and VFST dictionaries for use with libvoikko. It is now recommended to use VFST format
+if possible.
+</p>
+
+<ul>
+<li>Building the VFST dictionaries requires <a href="https://code.google.com/p/foma/">Foma</a>. For those who prefer building with
+Autotools based build system the <a href="https://github.com/hatapitk/foma/commits/autotools2">autotools2 branch of Foma</a> is also available.
+You only need the <kbd>foma</kbd> tool, shared libraries and development headers are not needed.</li>
+<li>Building VFST dictionaries requires <kbd>voikkovfstc</kbd> tool which is built as a part of libvoikko. Thus you now need to build and
+install libvoikko before building voikko-fi (previously the order was not sigificant).</li>
+<li>Python 3 has replaced Python 2 as the build scripting tool. Python 3 is needed even if you build only Malaga dictionaries.</li>
+</ul>
+
+<h2>Deprecation of Malaga based dictionary format</h2>
+
+<p>
+At the release of voikko-fi 2.0 and libvoikko 4.0 both Malaga and VFST format are stable. There should be no noticeable quality differences between
+these formats. In the future we will concentrate on ensuring the quality of VFST format and it is likely that only minimal testing will be
+performed on Malaga dictionares.
+</p>
+<p>
+We expect keep the Malaga format in good shape at least until January 2017. This will provide sufficient transition period for even the
+most conservative users. Decision to remove support for Malaga format from libvoikko and voikko-fi will be announced as an update to this
+document at least six months before a release is made that removes the support.
+</p>
+
+<h2>Questions, bug reports and support requests</h2>
+
+<p>
+If you have comments or need support related to this transition please send email to <a href="mailto:hatapitk@iki.fi">Harri Pitkänen (hatapitk@iki.fi)</a>
+or <a href="mail.html">the Voikko mailing lists</a>.
+</p>
 
 <div style="clear:both;" />
 
