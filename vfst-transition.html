@@ -4,6 +4,11 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <title>Voikko – Transitioning the Finnish dictionary from Malaga to VFST</title>
 <link rel="stylesheet" type="text/css" href="stylesheets/styles.css" />
+<style type="text/css">
+#perf caption { font-style: italic; }
+#perf { border-collapse: collapse; }
+#perf td, #perf th { border: 1px solid #555555; }
+</style>
 </head>
 <body>
 
@@ -77,6 +82,19 @@ there are some unexplored optimisation opportunities that may lead to additional
 <li>It is possible to transform the dictionary programmatically using regular expression operations.</li>
 <li>The format is suitable for word form generation and some specialised uses in grammar checking.</li>
 </ul>
+
+<table id="perf">
+<caption>Performance of different dictionary formats with equal coverage just before the release of libvoikko 4.0 and voikko-fi 2.0.
+Speed measurements are from spell checking a list of 5&nbsp;700&nbsp;000 strings from Finnish Wikipedia using an
+old laptop and single CPU core. The default configurations for Malaga and VFST are shown in <strong>bold</strong>.
+Smaller numbers are better.</caption>
+<tr><th>Dictionary</th><th>Time (min:sec)</th><th>Size (MB)</td></tr>
+<tr><td>Malaga (full functionality)</td><td>9:06</td><td>12</td></tr>
+<tr><td><strong>Malaga (spelling, grammar and hyphenation)</strong></td><td><strong>7:46</strong></td><td><strong>7.6</strong></td></tr>
+<tr><td>VFST (full functionality)</td><td>4:44</td><td>5.8</td></tr>
+<tr><td><strong>VFST (spelling, grammar, hyphenation and baseforms)</strong></td><td><strong>3:57</strong></td><td><strong>3.8</strong></td></tr>
+<tr><td>VFST (spelling, grammar and hyphenation)</td><td>3:45</td><td>1.5</td></tr>
+</table>
 
 <h2>Programs using libvoikko do not require any changes</h2>
 
