@@ -162,6 +162,14 @@ You only need the <kbd>foma</kbd> tool, shared libraries and development headers
 <li>Building VFST dictionaries requires <kbd>voikkovfstc</kbd> tool which is built as a part of libvoikko. Thus you now need to build and
 install libvoikko before building voikko-fi (previously the order was not sigificant).</li>
 <li>Python 3 has replaced Python 2 as the build scripting tool. Python 3 is needed even if you build only Malaga dictionaries.</li>
+<li>Commands to build and install the VFST dictionaries are <kbd>make vvfst</kbd> and <kbd>make vvfst-install</kbd>. The old Make targets
+<kbd>voikko</kbd> and <kbd>voikko-install</kbd> will build Malaga dictionaries for compatibility with older releases.</li>
+<li>The VFST dictionaries will produce BASEFORM attributes by default for morphological analysis. We recommend that dictionaries
+built for general use do not disable this feature. It is possible to make the dictionaries more compact by compiling with option
+<kbd>VVFST_BASEFORMS=no</kbd>. You can do this when you know that the baseforms will not be used (embedded dictionaries produced just for
+spell checking). Such dictionaries will still provide baseforms but they will be incorrect.</li>
+<li>Some rarely used build options have been deprecated by not providing support for them with VFST format. The support may be restored in
+future releases if demand for these options still exists. Please see README in the source distribution for detailed information.</li>
 </ul>
 
 <h2>Deprecation of Malaga based dictionary format</h2>
