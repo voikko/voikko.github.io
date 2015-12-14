@@ -15,8 +15,52 @@
 <p>Here you will find the release notes for different components of Voikko.
 These notes only mention notable changes between releases. Full changelogs
 for libvoikko, tmispell-voikko, libreoffice-voikko and mozvoikko are available in
-the source packages, and for Suomi-malaga in the Git revision history.
+the source packages, and for voikko-fi in the Git revision history.
 The releases are listed in reverse chronological order.</p>
+
+<h2>Libreoffice-voikko 5.0 (2015-12-14)</h2>
+<p>This version requires libvoikko 4.0 or later. It works with LibreOffice 4.4 and later.
+Notable changes in this release:</p>
+<ul>
+<li>The extension code has been completely rewritten in Python.
+ <ul>
+ <li>C++ compiler is no longer needed to compile the code.</li>
+ <li>LibreOffice SDK is not needed anymore for building the extension.</li>
+ <li>Single extension may support multiple platforms (such as 32 and 64 bit LibreOffice on Windows).</li>
+ <li>The libvoikko Python module needs to be packaged with the extension or installed separately through operating
+ system package manager.</li>
+ </ul>
+</li>
+<li>Support for spell checkers for languages that do not have the basic locale data in LibreOffice has been added.
+You can enter the BCP 47 language tag for your language in the LibreOffice character format dialog even if it is
+not available in the language dropdown list.</li>
+</ul>
+
+
+<h2>Voikko-fi (previously suomi-malaga) 2.0 (2015-12-14)</h2>
+<p>After version 1.19 the following notable changes have been made:</p>
+<ul>
+<li>The Finnish VFST dictionary format is now stable and ready for production use.</li>
+<li>Building and using the VFST dictionary format requires libvoikko 4.0 or later.</lI>
+<li>Python 3 is now required for building the dictionaries.</li>
+</ul>
+
+
+<h2>Libvoikko 4.0 (2015-12-14)</h2>
+<p>After version 3.8 the following notable changes have been made:</p>
+<ul>
+<li>Finnish VFST backend (dictionary format 5) is now stable and ready for production use. It is the recommended backend to be used for Finnish language.</li>
+<li>Previously only Malaga backend (dictionary format 2) was enabled by default. Now we enable HFST (dictionary format 3)
+and Finnish VFST (dictionary format 5) instead.</li>
+<li>The default dictionary path used as a last resort location to look for dictionary files is no longer set by default.
+It is still recommended to set a default dictionary path on systems where it is useful: <kbd>--with-dictionary-path=/usr/lib/voikko</kbd></li>
+<li>In the default build configuration it is now possible to use and distribute the libvoikko library under MPL 1.1 / GPL 2+ / LGPL 2.1+ tri-license.</li>
+<li>The Python module of libvoikko is now single source compatible with Python 2 and Python 3.</li>
+<li>Python 3 is now required for building the library.</li>
+</ul>
+
+
+<p><a href="vfst-transition.html">Read more about the major changes in libvoikko 4.0 and voikko-fi 2.0.</a></p>
 
 
 <h2>Suomi-malaga 1.19 (2015-10-09)</h2>
@@ -47,6 +91,7 @@ or later and Thunderbird 5.0 or later. Significant changes in this release:</p>
    signature requirement in the upcoming Firefox versions. No binary components are
    included in this signed package, they must be provided by the operating system.</li>
 </ul>
+
 
 <h2>Libvoikko 3.8 (2015-09-11)</h2>
 <p>This version requires Suomi-malaga 1.4 or later. Some features require Suomi-malaga 1.12
