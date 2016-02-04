@@ -18,6 +18,25 @@ for libvoikko, tmispell-voikko, libreoffice-voikko and mozvoikko are available i
 the source packages, and for voikko-fi in the Git revision history.
 The releases are listed in reverse chronological order.</p>
 
+<h2>Libvoikko 4.0.1 (2016-02-04)</h2>
+<p>After version 4.0 the following notable changes have been made:</p>
+<ul>
+<li>C++ compiler supporting the C++11 standard is now required for building the library.</li>
+<li>Tokenization functions for C/C++/Java have been optimized to perform
+reasonably even with long input texts (longer than typical text paragraphs).</li>
+<li>HFST backend has been fixed to handle VOIKKO_OPT_ACCEPT_ALL_UPPERCASE
+option properly.</li>
+<li>The Python module now tries to load shared library dependencies of
+libvoikko (such as hfstospell) if setLibrarySearchPath is used.</li>
+<li>On Windows dictionaries are searched from user's local application data
+folder (C:\Documents and Settings\$username\Local Settings\Application
+Data\voikko or similar).</li>
+<li>Fixed unweighted VFST lookup code for some compilers including GCC for
+Windows.</li>
+<li>Lookup performance of Finnish VFST backend has been improved by about 15 %.</li>
+</ul>
+
+
 <h2>Libreoffice-voikko 5.0 (2015-12-14)</h2>
 <p>This version requires libvoikko 4.0 or later. It works with LibreOffice 4.4 and later.
 Notable changes in this release:</p>

@@ -18,7 +18,7 @@
 &lt;dependency&gt;
     &lt;groupId><strong>org.puimula.voikko</strong>&lt;/groupId&gt;
     &lt;artifactId><strong>libvoikko</strong>&lt;/artifactId&gt;
-    &lt;version><strong>3.6.1</strong>&lt;/version&gt;
+    &lt;version><strong>4.0.1</strong>&lt;/version&gt;
 &lt;/dependency&gt;
 </pre>
 
@@ -33,8 +33,14 @@ On Windows you should place <kbd>libvoikko-1.dll</kbd> in one of the directories
 <a href="http://www.puimula.org/htp/testing/voikko-sdk/win-crossbuild/">Here you can download the library for Windows</a> (choose 32 or 64 bit version according to
 your Java VM).</p>
 
-<p>Versions of the Java interface and the native library do not need to be exactly the same. The Java interface (or Maven artifact) version 3.6.1 should work with
-all native library versions 3.1 or later.</p>
+<p>Versions of the Java interface and the native library do not need to be exactly the same. The requirements are listed in the following table:</p>
+
+<table class="paketit">
+<tr><th>Java interface (Maven artifact) version</th><th>Required native library version</th></tr>
+<tr><td>4.0.1</td><td>3.8 or later</td></tr>
+<tr><td>3.6.1</td><td>3.1 or later</td></tr>
+</table>
+
 
 <h2>Installing suitable dictionary files</h2>
 <p style="font-size:85%; text-align:right">... or how to resolve <kbd>org.puimula.libvoikko.VoikkoException: Specified dictionary variant was not found</kbd></p>
