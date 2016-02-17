@@ -18,6 +18,26 @@ for libvoikko, tmispell-voikko, libreoffice-voikko and mozvoikko are available i
 the source packages, and for voikko-fi in the Git revision history.
 The releases are listed in reverse chronological order.</p>
 
+
+<h2>Libvoikko 4.0.2 (2016-02-17)</h2>
+<p>After version 4.0.1 the following notable changes have been made:</p>
+<ul>
+<li>Fixed a memory leak that could affect long running processes that use the Finnish
+VFST backend.</li>
+<li>Tokenization function for Python has been optimized to work with long input texts.</li>
+<li>Performance of language independent weighted VFST backend (enabled by
+<kbd>--enable-expvfst</kbd>) has been improved. For example spelling suggestions from
+Lule Sami speller are now about 2&nbsp;-&nbsp;3 times faster than before.
+    <ul><li>Note that you now need to use voikkovfstc from libvoikko 4.0.2 to create weighted
+    VFST transducers. Earlier versions are not compatible anymore. Unweighted transducers
+    (those used for Finnish) are still compatible across versions >= 4.0.</li></ul>
+</li>
+<li>Many small performance improvements have been made in various parts of the library.
+Their combined effect is most visible when Finnish gammar checker is used. It is about
+25&nbsp;% faster than in version 4.0.1.</li>
+</ul>
+
+
 <h2>Libvoikko 4.0.1 (2016-02-04)</h2>
 <p>After version 4.0 the following notable changes have been made:</p>
 <ul>
