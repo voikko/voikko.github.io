@@ -12,17 +12,17 @@
 
 <h1>Voikko<br /><small>Tietoa ohjelmiston testaajille</small></h1>
 
-<p>Tällä sivulla annetaan ohjeita Voikon testauksesta kiinnostuneille. Suomi-malagan
+<p>Tällä sivulla annetaan ohjeita Voikon testauksesta kiinnostuneille. Voikko-fi:n
 kehitysversion käyttö on yleensä yksinkertaisin tapa seurata Voikon kehitystä. Täysi
 testiympäristö kannattaa asentaa vain, jos haluaa vakavasti osallistua Voikon testaamiseen.
 Tämä edellyttää jo jonkin verran teknistä osaamista.</p>
 
 <p>Ohjeissa oletetaan, että käytössä on uusin kehitysversio libvoikosta ja
-Suomi-malagasta. Uusimmat vakaat versiot eivät välttämättä riitä.</p>
+voikko-fi:stä. Uusimmat vakaat versiot eivät välttämättä riitä.</p>
 
-<h2>Suomi-Malagan kehitysversion käyttö</h2>
+<h2>Voikko-fi:n kehitysversion käyttö</h2>
 
-<p>Suomi-Malaga on Voikon komponentti, joka sisältää suomen kielen sanaston
+<p>Voikko-fi on Voikon komponentti, joka sisältää suomen kielen sanaston
 sekä säännöt sanojen taivutuksesta, johtamisesta ja käytöstä yhdyssanan osana.
 Tästä syystä se on Voikon komponenteista ehkä kaikkein näkyvimmin kehittyvä.
 Jos haluat testata uusimpia kehitysversioita, se käy melko helposti alla
@@ -30,25 +30,24 @@ olevien ohjeiden avulla.</p>
 
 <ol>
 
-<li><p>Asenna versionhallintatöykalu <tt>git</tt> sekä Malagaan kuuluva
-osa <tt>malaga-bin</tt>. Asenna myös kehitystyökalu <tt>make</tt> ja
+<li><p>Asenna versionhallintatöykalu <tt>git</tt> sekä LEXC-kääntäjä
+<tt>foma</tt>. Asenna myös kehitystyökalu <tt>make</tt> ja
 <tt>python</tt>-tulkki. Debianissa nämä ovat samannimisissä
 paketeissa.</p></li>
 
-<li><p>Lataa Suomi-Malaga versionhallinnasta omaan kotihakemistoosi seuraavilla
+<li><p>Lataa Voikko-fi versionhallinnasta omaan kotihakemistoosi seuraavilla
 komennoilla:</p>
 <pre>
 mkdir ~/git
 git clone git://github.com/voikko/corevoikko.git ~/git/corevoikko
-mkdir -p ~/.voikko/2
-ln -s ~/git/corevoikko/voikko-fi/voikko ~/.voikko/2/mor-standard
+mkdir -p ~/.voikko/5
 </pre>
 </li>
 
 <li><p>Käännä voikko-fi komennolla:</p>
 <pre>
 cd ~/git/corevoikko/voikko-fi
-make voikko
+make vvfst-install DESTDIR=~/.voikko
 </pre>
 </li>
 
@@ -59,7 +58,7 @@ uudempaan kehitysversioon, se tapahtuu seuraavilla komennoilla:</p>
 <pre>
 cd ~/git/corevoikko/voikko-fi
 git pull -r
-make voikko
+make vvfst-install DESTDIR=~/.voikko
 </pre>
 </li>
 
@@ -84,8 +83,6 @@ seuraavilla komennoilla:</p>
 <pre>
 makevoikkodeb voikko-fi
 makevoikkodeb libvoikko
-makevoikkodeb ooovoikko
-makevoikkodeb tmispell
 </pre>
 <p>(Jos kääntämiseen tarvittavia muita paketteja ei ole koneelle asennettuna,
 <tt>makevoikkodeb</tt> kertoo tarvittavien pakettien nimet ja keskeyttää
@@ -93,12 +90,12 @@ toiminnan. Kun olet asentanut pyydetyt paketit, aja komento uudelleen.)</p>
 </li>
 </ul>
 
-<h2>Suomi-malagan ja libvoikon testausohjeita kehittäjille</h2>
+<h2>Voikko-fi:n ja libvoikon testausohjeita kehittäjille</h2>
 
 <p>Nämä ohjeet on siirretty englanninkieliseen <a href="https://github.com/voikko/corevoikko/wiki/libvoikko-IntegrationTesting">kehityswikiin</a>.</p>
 
-<h2>Suomi-malagan Voikko-version (SMV) julkaisukriteerit ja testimenetelmiä</h2>
-<p>Julkaisua edeltävän testauksen tavoitteena on varmistaa, että SMV täyttää seuraavat kriteerit:</p>
+<h2>Voikko-fi:n julkaisukriteerit ja testimenetelmiä</h2>
+<p>Julkaisua edeltävän testauksen tavoitteena on varmistaa, että voikko-fi täyttää seuraavat kriteerit:</p>
 <ol>
 <li>Oikeita sanoja tunnistetaan vähintään yhtä paljon kuin edellisessä vakaassa versiossa.</li>
 <li>Virheellisiä sanoja tunnistetaan korkeintaan yhtä paljon kuin edellisessä vakaassa versiossa.</li>
@@ -110,9 +107,9 @@ vakaassa versiossa.</li>
 edellisessä vakaassa versiossa.</li>
 <li>Uusia virheellisesti tavuttuvia sanoja on merkittävästi vähemmän kuin uusia oikein tavuttuvia
 sanoja.</li>
-<li>SMV ei jumiudu tai muuten käyttäydy vakavia ongelmia aiheuttavalla tavalla millään sellaisella
+<li>Voikko-fi ei jumiudu tai muuten käyttäydy vakavia ongelmia aiheuttavalla tavalla millään sellaisella
 syötteellä, jonka se voi libvoikon kautta saada.</li>
-<li>SMV on joillakin edellisistä kriteereistä mitattuna sen verran edellistä vakaata versiota parempi,
+<li>Voikko-fi on joillakin edellisistä kriteereistä mitattuna sen verran edellistä vakaata versiota parempi,
 että uuden vakaan version julkaiseminen on mielekästä.</li>
 </ol>
 
@@ -124,7 +121,7 @@ ja uusimmalle kehitysversiolle ja vertailtava tuloksia.</p>
 saada tietoa, jos testi suoritetaan riittävän pitkillä sanoilla. Komento <kbd>anagrammivoikko
 sana1 sana2 sana3 ...</kbd> listaa annettujen sanojen kaikki hyväksytyt anagrammit sekä kertoo, kuinka
 paljon aikaa anagrammien testaaminen vei. Pitkien sanojen käsittely vie paljon aikaa, mutta voi antaa
-arvokasta tietoa SMV:ssä olevista virheistä joita muilla menetelmillä olisi lähes mahdotonta löytää.
+arvokasta tietoa voikko-fi:ssä olevista virheistä joita muilla menetelmillä olisi lähes mahdotonta löytää.
 Tästä syystä testi soveltuu erittäin hyvin niille, jotka haluavat auttaa Voikon kehityksessä prosessoriaikaa
 lahjoittamalla.</p></li>
 
@@ -134,20 +131,20 @@ kriteeriä 3. Testikomennoksi käy vaikkapa <kbd>time cat sanalista.txt | voikko
 
 <li><p>Kriteeriä 3 (ja samalla kriteereitä 1 ja 5) voi testata samoin kuin edellä, jos käyttää valmiiden
 sanalistojen sijaan esimerkiksi suomenkielisessä Wikipediassa esiintyvien sanojen listaa. Tällaisia voi
-tehdä vaikkapa SVN:stä löytyvän työkalun <kbd>wp-wordlist</kbd> avulla (käyttöesimerkkejä skriptin
+tehdä vaikkapa Gitistä löytyvän työkalun <kbd>wp-wordlist</kbd> avulla (käyttöesimerkkejä skriptin
 kommenteissa).</p></li>
 
 <li><p>Kriteeriä 6 voi testata vertaamalla komennon <kbd>cat sanalista | voikkohyphenate</kbd>
-tulostetta vanhalla ja uudella SMV:n versiolla.</p></li>
+tulostetta vanhalla ja uudella voikko-fi:n versiolla.</p></li>
 </ul>
 
-<p>Kriteeriä 7 varten ei ole olemassa mitään helppoja testejä. Toisaalta Suomi-malagan tapauksessa tämän
-kriteerin toteutuminen aiheuttaa harvoin ongelmia, sillä ohjelmointikielenä Malaga ei edes mahdollista
+<p>Kriteeriä 7 varten ei ole olemassa mitään helppoja testejä. Toisaalta voikko-fi:n tapauksessa tämän
+kriteerin toteutuminen aiheuttaa harvoin ongelmia, sillä ohjelmointikielenä LEXC ei edes mahdollista
 täydellisesti jumiutuvien tai kaatuvien ohjelmien kirjoittamista. Hyvin pitkiin analyysiaikoihin päätyminen
 on kuitenkin mahdollista. Kriteerin 8 toteutumisen pitäisi toivottavasti selvitä muiden testien suorittamisen
 yhteydessä.</p> 
 
-<p>Erityisesti on huomattavaa, että SMV:n (kuten muidenkin Voikon komponenttien) julkaisussa tavoitteena
+<p>Erityisesti on huomattavaa, että voikko-fi:n (kuten muidenkin Voikon komponenttien) julkaisussa tavoitteena
 on pääsääntöisesti varmistaa, että uudet versiot ovat mitattavasti edellisiä parempia. Sitä, kuinka paljon
 versioiden välillä on milläkin osa-alueella edettävä ei ole määritelty. Tämän johdosta kehittäjät voivat
 keskittyä itseään kiinnostaviin alueisiin ja välttää liian sitovien tavoitteiden aiheuttaman stressin.
