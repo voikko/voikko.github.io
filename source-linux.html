@@ -25,7 +25,7 @@
 </ul>
 <p>You will also need a C++ compiler, Python (version 3) and GNU make, sed and sort.</p>
 <h2>Quick installation instructions</h2>
-<p>In the following Foma and libvoikko will be installed to /usr/local/voikko and voikko-fi (the Finnish dictionary) to
+<p>In the following Foma and libvoikko will be installed to /usr/local and voikko-fi (the Finnish dictionary) to
 /usr/local/voikkodict. You may however choose the installation prefixes as you wish.</p>
 
 <ol>
@@ -34,18 +34,18 @@
 <li>If you want support for languages other than Finnish install hfst-ospell by following the installation instructions in its README file.</li>
 
 <li>Install libvoikko. Unpack, go to the source directory and run
-<kbd>./configure&nbsp;--prefix=/usr/local/voikko&nbsp;--with-dictionary-path=/usr/local/voikkodict;&nbsp;make</kbd> and then
+<kbd>./configure&nbsp;--prefix=/usr/local&nbsp;--with-dictionary-path=/usr/local/voikkodict;&nbsp;make</kbd> and then
 <kbd>make&nbsp;install</kbd> as root. If you did not install hfst-ospell you must add <kbd>--disable-hfst</kbd> to your ./configure command.</li>
 
 <li>Install voikko-fi: Unpack the sources, run
-<kbd>PATH=/usr/local/voikko/bin:$PATH&nbsp;make&nbsp;vvfst</kbd> in the source directory and then as root
+<kbd>PATH=/usr/local/bin:$PATH&nbsp;make&nbsp;vvfst</kbd> in the source directory and then as root
 <kbd>make&nbsp;vvfst-install&nbsp;DESTDIR=/usr/local/voikkodict</kbd>.
 You can now check your installation by running the command
-<kbd>/usr/local/voikko/bin/voikkospell -d fi</kbd> and typing in Finnish words, one per line. The program will
+<kbd>/usr/local/bin/voikkospell -d fi</kbd> and typing in Finnish words, one per line. The program will
 prefix correct words with "C:" and incorrect words with "W:".</li>
 
 <li>Edit the file /etc/ld.so.conf by adding a line containing the directory of libvoikko.so
-(in this example /usr/local/voikko/lib). Then run <kbd>ldconfig</kbd> as root. This step is
+(in this example /usr/local/lib). Then run <kbd>ldconfig</kbd> as root. This step is
 required mainly for the LibreOffice UNO package to work, and it is not necessary if you install
 libvoikko using a deb/rpm package.</li>
 
@@ -54,15 +54,15 @@ libvoikko using a deb/rpm package.</li>
 <li><a class="suomi" href="ooo-kielityokalut.html">Install libreoffice-voikko.</a></li>
 
 <li>Install tmispell-voikko. Unpack, run
-<kbd>./configure&nbsp;--prefix=/usr/local/voikko;&nbsp;make</kbd> and as root <kbd>make&nbsp;install</kbd>.
-You should also create directory /usr/local/voikko/etc and copy the provided tmispell.conf.example
+<kbd>./configure&nbsp;--prefix=/usr/local;&nbsp;make</kbd> and as root <kbd>make&nbsp;install</kbd>.
+You should also create directory /usr/local/etc and copy the provided tmispell.conf.example
 to that directory.</li>
 
 <li>If you want to use tmispell as a replacement for ispell (for example in KDE), do the following:
 <ol><li>Install ispell.</li>
     <li>Rename the ispell binary /usr/bin/ispell to ispell.real. On Debian, you can do this by running
     (as root) <kbd>dpkg-divert&nbsp;--divert&nbsp;/usr/bin/ispell.real&nbsp;--rename&nbsp;/usr/bin/ispell</kbd>.</li>
-    <li>Add a symbolic link /usr/bin/ispell -> /usr/local/voikko/bin/tmispell.</li>
+    <li>Add a symbolic link /usr/bin/ispell -> /usr/local/bin/tmispell.</li>
     <li>Create two empty files:
     <kbd>touch&nbsp;/usr/lib/ispell/suomi.hash&nbsp;/usr/lib/ispell/suomi.aff</kbd></li>
      <li>Go to the KDE Control Center and change the spellchecker settings to use ispell. Dictionary
