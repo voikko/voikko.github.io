@@ -30,7 +30,7 @@
 <p>You need to have the native libvoikko library available in a place where the OS specific library loading mechanism (<kbd>System.loadLibrary</kbd> in fact) will find it.
 Most modern Linux distributions contain the <kbd>libvoikko</kbd> package; installing that should be sufficient.
 On Windows you should place <kbd>libvoikko-1.dll</kbd> in one of the directories within the PATH environment variable.
-<a href="http://www.puimula.org/htp/testing/voikko-sdk/win-crossbuild/">Here you can download the library for Windows</a> (choose 32 or 64 bit version according to
+<a href="https://www.puimula.org/htp/testing/voikko-sdk/win-crossbuild/">Here you can download the library for Windows</a> (choose 32 or 64 bit version according to
 your Java VM).</p>
 
 <p>Versions of the Java interface and the native library do not need to be exactly the same. The requirements are listed in the following table:</p>
@@ -46,7 +46,7 @@ your Java VM).</p>
 <h2>Installing suitable dictionary files</h2>
 <p style="font-size:85%; text-align:right">... or how to resolve <kbd>org.puimula.libvoikko.VoikkoException: Specified dictionary variant was not found</kbd></p>
 <p>You need to have a dictionary installed that is compatible with your version of libvoikko and matches the language (and language variant) you specified as
-a parameter in the constructor for Voikko object. <a href="http://www.puimula.org/htp/testing/voikko-snapshot/">Here you can download various dictionary packages
+a parameter in the constructor for Voikko object. <a href="https://www.puimula.org/htp/testing/voikko-snapshot/">Here you can download various dictionary packages
 for Finnish</a>. The dictionary packages need to be unzipped but the directory structure within the packages must be preserved.</p>
 <p>On Linux you can unpack the dictionaries under <kbd>/etc/voikko</kbd> or <kbd>$HOME/.voikko</kbd>. On Windows these default locations must be set through
 the system registry. Another, more portable option is to choose an application specific installation directory for the dictionaries and use the two parameter
