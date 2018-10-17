@@ -19,6 +19,28 @@ the source packages, and for voikko-fi in the Git revision history.
 The releases are listed in reverse chronological order.</p>
 
 
+<h2>Libvoikko 4.2 (2018-10-17)</h2>
+<p>After version 4.1.1 the following notable have been made:</p>
+<ul>
+<li>Support for Malaga (dictionary format 2) has been removed.</li>
+<li>Unmaintained MSVC build system has been removed.</li>
+<li>Dependency on hfst-ospell has been updated from 0.4.5 to 0.5.0.</li>
+<li>Developer friendliness of hyphenator API has been improved:
+  <ul>
+  <li>voikkoInsertHyphensCstr, a function to produce hyphenated words
+   has been added in the core library. Previously similar functionality
+   existed only in the wrapper APIs.</li>
+  <li>Hyphenation functions for C, Java, Python and JavaScript now allow
+   developer to specify the string that is used as hyphen (useful if
+   you want to insert HTML soft hyphens).</li>
+  </ul>
+<li>Java wrapper now requires Java 7 or later.</li>
+<li>Some modernization of Python wrapper module has been done.</li>
+<li>JavaScript port has been updated to work with latest Emscripten
+  and optionally produce version that is suitable for use with Node.js.</li>
+</ul>
+
+
 <h2>Voikko-fi 2.2 (2017-08-23)</h2>
 <p>This version requires libvoikko version 4.0 or later. After version 2.1 the following notable changes
 have been made:</p>
@@ -33,7 +55,7 @@ have been made:</p>
 <ul>
 <li>Finnish VFST: fix bad suggestion (missed capitalization) on word split.</li>
 <li>Fix warnings when compiling with the latest GCC compiler.</li>
-<li>Java interface: added methods to get token start and end offsets easily.</lI>
+<li>Java interface: added methods to get token start and end offsets easily.</li>
 </ul>
 
 
@@ -44,7 +66,7 @@ have been made:</p>
 build script and a wrapper library to ease the use of the library.
 <a href="https://www.puimula.org/htp/testing/js-libvoikko/js-libvoikko-demo.html">A web page
 demonstrating some features of the library</a> is available.</li>
-<li>Bugs related to spelling suggestions, Java interface and Clang builds have been fixes.</li>
+<li>Bugs related to spelling suggestions, Java interface and Clang builds have been fixed.</li>
 </ul>
 
 
