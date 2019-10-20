@@ -31,11 +31,24 @@ body.wide {
 }
 
 div.frontmain {
-  position: relative;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin: 5px 0;
 }
 
-div.frontmain div {
-  position: relative;
+div.frontmain .column {
+  flex: 1;
+  margin: 2px;
+  padding: 10px;
+  &:first-child { margin-left: 0; }
+  &:last-child { margin-right: 0; }
+}
+
+@media screen and (max-width: 650px) {
+  div.frontmain  {
+    flex-flow: column;
+  }
 }
 
 div.frontmain ul {
@@ -71,11 +84,6 @@ dt {
 
 address {
   margin: 1em 0;
-}
-
-.sf-logo {
-  float: right;
-  margin-top: 5px;
 }
 
 em {
