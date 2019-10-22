@@ -19,6 +19,22 @@ the source packages, and for voikko-fi in the Git revision history.
 The releases are listed in reverse chronological order.</p>
 
 
+<h2>Libvoikko 4.3 (2019-10-22)</h2>
+<p>After version 4.2 the following notable changes have been made:</p>
+<ul>
+<li>
+  New API function voikkoGetAttributeValues to list possible values for
+  an analysis attribute. This has also been added to Java, Python and JavaScript
+  APIs. The function is useful when building vectorizers for machine learning
+  applications. Initially it will be used by
+  <a href="https://github.com/voikko/voikko-sklearn">voikko-sklearn</a> integration module.
+</li>
+<li>Improved spelling correction for Finnish words containing a hyphen.</li>
+<li>Improvements for Common Lisp interface.</li>
+<li>Fix compilation of JavaScript port on MacOS and with latest Emscripten.</li>
+</ul>
+
+
 <h2>Voikko-fi 2.3 (2019-03-09)</h2>
 <p>This version requires libvoikko version 4.0 or later. After version 2.2 the following notable changes
 have been made:</p>
