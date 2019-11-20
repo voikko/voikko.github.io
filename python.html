@@ -21,9 +21,10 @@ pip3 install libvoikko
 <p>Additionally you need to have the native libvoikko library and at least one dictionary installed in order to use Voikko in your application.</p>
 
 <h2>Installing the native library</h2>
-<p style="font-size:85%; text-align:right">... or how to resolve <kbd>TODO error message here</kbd></p>
+<p style="font-size:85%; text-align:right">... or how to resolve <kbd>OSError: libvoikko.so.1: cannot open shared object file: No such file or directory</kbd></p>
 
-<p>You need to have the native libvoikko library available in a place where the OS specific library loading mechanism will find it.
+<p>Note that the error message may vary slightly between different operating systems.
+You need to have the native libvoikko library available in a place where the OS specific library loading mechanism will find it.
 Most modern Linux distributions contain the <kbd>libvoikko</kbd> package; installing that should be sufficient.
 On Windows you should place <kbd>libvoikko-1.dll</kbd> in one of the directories within the PATH environment variable.
 <a href="https://www.puimula.org/htp/testing/voikko-sdk/win-crossbuild/">Here you can download the library for Windows</a> (choose 32 or 64 bit version according to
@@ -37,7 +38,7 @@ have the same or higher version that the Python package.</p>
 
 
 <h2>Installing suitable dictionary files</h2>
-<p style="font-size:85%; text-align:right">... or how to resolve <kbd>TODO error message here</kbd></p>
+<p style="font-size:85%; text-align:right">... or how to resolve <kbd>libvoikko.VoikkoException: Initialization of Voikko failed: No valid dictionaries were found</kbd></p>
 <p>You need to have a dictionary installed that is compatible with your version of libvoikko and matches the language (and language variant) you specified as
 a parameter in the constructor for Voikko object. <a href="https://www.puimula.org/htp/testing/voikko-snapshot-v5/">Here you can download various dictionary packages
 for Finnish</a>. The dictionary packages need to be unzipped but the directory structure within the packages must be preserved.</p>
