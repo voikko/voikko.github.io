@@ -15,20 +15,28 @@
 <p>The Python interface for Libvoikko is available from the <a href="https://pypi.org/">Python Package Index</a>:</p>
 
 <pre>
-pip3 install libvoikko
+    pip3 install libvoikko
 </pre>
 
-<p>Additionally you need to have the native libvoikko library and at least one dictionary installed in order to use Voikko in your application.</p>
+<p>Additionally you need to have the native libvoikko library and at least one dictionary installed in order to use it.</p>
+
+<p>To get started with using the library you can look at the built in documentation:</p>
+<pre>
+    from libvoikko import Voikko
+    help(Voikko)
+</pre>
 
 <h2>Installing the native library</h2>
 <p style="font-size:85%; text-align:right">... or how to resolve <kbd>OSError: libvoikko.so.1: cannot open shared object file: No such file or directory</kbd></p>
 
 <p>Note that the error message may vary slightly between different operating systems.
-You need to have the native libvoikko library available in a place where the OS specific library loading mechanism will find it.
-Most modern Linux distributions contain the <kbd>libvoikko</kbd> package; installing that should be sufficient.
-On Windows you should place <kbd>libvoikko-1.dll</kbd> in one of the directories within the PATH environment variable.
-<a href="https://www.puimula.org/htp/testing/voikko-sdk/win-crossbuild/">Here you can download the library for Windows</a> (choose 32 or 64 bit version according to
-your Python interpreter version).</p>
+You need to have the native libvoikko library available in a place where the OS specific library loading mechanism will find it.</p>
+<ul>
+<li>Most modern <em>Linux</em> distributions contain the <kbd>libvoikko</kbd> package; installing that should be sufficient.</li>
+<li>On <em>Windows</em> you should place <kbd>libvoikko-1.dll</kbd> in one of the directories within the PATH environment variable.
+<a href="https://www.puimula.org/htp/testing/voikko-sdk/win-crossbuild/">Here you can download the library for Windows</a> (choose 32 or 64 bit version according to your Python interpreter version).</li>
+<li>On <em>macOS</em> Homebrew ships libvoikko and Finnish dictionary in one package: <kbd>brew install libvoikko</kbd>.</li>
+</ul>
 
 <p>It is also possible to load the native library from custom path. To do this call static method <kbd>Voikko.setLibrarySearchPath(path)</kbd> before constructing
 a new Voikko instance.</p>
@@ -42,7 +50,7 @@ have the same or higher version that the Python package.</p>
 <p>You need to have a dictionary installed that is compatible with your version of libvoikko and matches the language (and language variant) you specified as
 a parameter in the constructor for Voikko object. <a href="https://www.puimula.org/htp/testing/voikko-snapshot-v5/">Here you can download various dictionary packages
 for Finnish</a>. The dictionary packages need to be unzipped but the directory structure within the packages must be preserved.</p>
-<p>On Linux you can unpack the dictionaries under <kbd>/etc/voikko</kbd> or <kbd>$HOME/.voikko</kbd>. On Windows these default locations must be set through
+<p>On Linux and macOS you can unpack the dictionaries under <kbd>/etc/voikko</kbd> or <kbd>$HOME/.voikko</kbd>. On Windows these default locations must be set through
 the system registry. Another, more portable option is to choose an application specific installation directory for the dictionaries and use the optional <kbd>path</kbd>
 constructor parameter for Voikko to specify that directory.</p>
 
