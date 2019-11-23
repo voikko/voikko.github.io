@@ -51,8 +51,8 @@ have the same or higher version that the Python package.</p>
 <p>You need to have a dictionary installed that is compatible with your version of libvoikko and matches the language (and language variant) you specified as
 a parameter in the constructor for Voikko object. <a href="https://www.puimula.org/htp/testing/voikko-snapshot-v5/">Here you can download various dictionary packages
 for Finnish</a>. The dictionary packages need to be unzipped but the directory structure within the packages must be preserved.</p>
-<p>On Linux and macOS you can unpack the dictionaries under <kbd>/etc/voikko</kbd> or <kbd>$HOME/.voikko</kbd>. On Windows these default locations must be set through
-the system registry. Another, more portable option is to choose an application specific installation directory for the dictionaries and use the optional <kbd>path</kbd>
+<p>On Linux and macOS you can unpack the dictionaries under <kbd>/etc/voikko</kbd> or <kbd>$HOME/.voikko</kbd>. On Windows, when using libvoikko-1.dll linked above,
+the files can be unpacked under <kbd>C:\Voikko</kbd>. Another, more portable option is to choose an application specific installation directory for the dictionaries and use the optional <kbd>path</kbd>
 constructor parameter for Voikko to specify that directory.</p>
 
 <div style="clear:both;" />
