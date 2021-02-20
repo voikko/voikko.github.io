@@ -34,8 +34,10 @@
 You need to have the native libvoikko library available in a place where the OS specific library loading mechanism will find it.</p>
 <ul>
 <li>Most modern <em>Linux</em> distributions contain the <kbd>libvoikko</kbd> package; installing that should be sufficient.</li>
-<li>On <em>Windows</em> you should place <kbd>libvoikko-1.dll</kbd> in one of the directories within the PATH environment variable.
-<a href="https://www.puimula.org/htp/testing/voikko-sdk/win-crossbuild/">Here you can download the library for Windows</a> (choose 32 or 64 bit version according to your Python interpreter version).</li>
+<li>On <em>Windows</em> you should <em>note that Python 3.8 changed the way how native libraries are loaded</em>.
+<a href="https://www.puimula.org/htp/testing/voikko-sdk/win-crossbuild/">Download the library for Windows</a> (choose 32 or 64 bit version according to your Python interpreter version)
+and place <kbd>libvoikko-1.dll</kbd> in some directory such as <kbd>c:\Voikko</kbd>. Then, immediately after importing the library call <kbd>Voikko.setLibrarySearchPath("c:/Voikko")</kbd>
+to ensure that the library will be correctly loaded.</li>
 <li>On <em>macOS</em> Homebrew ships libvoikko and Finnish dictionary in one package: <kbd>brew install libvoikko</kbd>.</li>
 </ul>
 

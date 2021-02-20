@@ -15,11 +15,11 @@
 <p>These instructions are valid for the latest stable releases only.</p>
 <p>You will need the following programs:</p>
 <ul>
-<li><a href="https://bitbucket.org/mhulden/foma/downloads">Foma</a></li>
+<li><a href="https://fomafst.github.io/">Foma</a></li>
 
 <li>libvoikko</li>
 <li>voikko-fi</li>
-<li>optionally (to support ZHFST spellers, only for languages other than Finnish) <a href="http://sourceforge.net/projects/hfst/files/hfst/source/">hfst-ospell</a></li>
+<li>optionally (to support ZHFST spellers, only for languages other than Finnish) <a href="https://github.com/hfst/hfst-ospell">hfst-ospell</a></li>
 <li>for LibreOffice support, libreoffice-voikko</li>
 <li>for ispell emulation, tmispell-voikko.</li>
 </ul>
@@ -48,26 +48,6 @@ prefix correct words with "C:" and incorrect words with "W:".</li>
 (in this example /usr/local/lib). Then run <kbd>ldconfig</kbd> as root. This step is
 required mainly for the LibreOffice UNO package to work, and it is not necessary if you install
 libvoikko using a deb/rpm package.</li>
-
-<li>Build libreoffice-voikko by following the instructions in the source package.</li>
-
-<li><a class="suomi" href="ooo-kielityokalut.html">Install libreoffice-voikko.</a></li>
-
-<li>Install tmispell-voikko. Unpack, run
-<kbd>./configure&nbsp;--prefix=/usr/local;&nbsp;make</kbd> and as root <kbd>make&nbsp;install</kbd>.
-You should also create directory /usr/local/etc and copy the provided tmispell.conf.example
-to that directory.</li>
-
-<li>If you want to use tmispell as a replacement for ispell (for example in KDE), do the following:
-<ol><li>Install ispell.</li>
-    <li>Rename the ispell binary /usr/bin/ispell to ispell.real. On Debian, you can do this by running
-    (as root) <kbd>dpkg-divert&nbsp;--divert&nbsp;/usr/bin/ispell.real&nbsp;--rename&nbsp;/usr/bin/ispell</kbd>.</li>
-    <li>Add a symbolic link /usr/bin/ispell -> /usr/local/bin/tmispell.</li>
-    <li>Create two empty files:
-    <kbd>touch&nbsp;/usr/lib/ispell/suomi.hash&nbsp;/usr/lib/ispell/suomi.aff</kbd></li>
-     <li>Go to the KDE Control Center and change the spellchecker settings to use ispell. Dictionary
-     should be "suomi" and encoding "UTF-8".</li></ol></li>
-</ol>
 
 <div style="clear:both;" />
 
