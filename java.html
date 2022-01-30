@@ -12,6 +12,19 @@
 
 <h1>Voikko<br /><small>Using in Java applications</small></h1>
 
+<p>There are two different solutions available for using Voikko ja Java applications.</p>
+
+<h2>Option 1: Raudikko &mdash; partial reimplementation of libvoikko in pure Java</h2>
+
+<p><a href="https://github.com/EvidentSolutions/raudikko">Raudikko</a> is a partial reimplementation of libvoikko written in pure Java. It does not have all the features
+of libvoikko but if you only need to do morphological analysis or search indexing for Finnish this is definitely the easiest and recommended solution. Raudikko uses Voikko's morphological dictionaries (version 5, Finnish VFST) so it will give you exactly the same results as original libvoikko but without the significant additional work needed to install and use native C++ libraries.<p>
+
+<p>There is also an <a href="https://github.com/EvidentSolutions/elasticsearch-analysis-raudikko">Elasticsearch plugin providing Finnish analysis</a> built on top of Raudikko.</p>
+
+<h2>Option 2: Java wrapper for the native libvoikko library</h2>
+
+<p>Libvoikko comes with Java wrapper that uses native libvoikko over JNA interface. This option gives you all the features of libvoikko including spelling and grammar checker but you will have to install the native libraries. Use this only if Raudikko is not enough for your purposes.</p>
+
 <p>The Java interface for Libvoikko is available on the Maven Central Repository:</p>
 
 <pre>
@@ -24,7 +37,7 @@
 
 <p>In addition to this artifact you need to have the native libvoikko library and at least one dictionary installed in order to use Voikko in your application.</p>
 
-<h2>Installing the native library</h2>
+<h3>Installing the native library</h3>
 <p style="font-size:85%; text-align:right">... or how to resolve <kbd>Could not load the native component of libvoikko.</kbd></p>
 
 <p>You need to have the native libvoikko library available in a place where the OS specific library loading mechanism (<kbd>System.loadLibrary</kbd> in fact) will find it.
@@ -43,7 +56,7 @@ your Java VM).</p>
 </table>
 
 
-<h2>Installing suitable dictionary files</h2>
+<h3>Installing suitable dictionary files</h3>
 <p style="font-size:85%; text-align:right">... or how to resolve <kbd>org.puimula.libvoikko.VoikkoException: Specified dictionary variant was not found</kbd></p>
 <p>You need to have a dictionary installed that is compatible with your version of libvoikko and matches the language (and language variant) you specified as
 a parameter in the constructor for Voikko object. <a href="https://www.puimula.org/htp/testing/voikko-snapshot-v5/">Here you can download various dictionary packages
@@ -52,10 +65,6 @@ for Finnish</a>. The dictionary packages need to be unzipped but the directory s
 the system registry. Another, more portable option is to choose an application specific installation directory for the dictionaries and use the two parameter
 constructor of Voikko to specify that directory.</p>
 
-
-<h2>Pure Java option</h2>
-<p>There is also a partial reimplementation of libvoikko written in pure Java: <a href="https://github.com/EvidentSolutions/raudikko">Raudikko</a>. It does not have all the features
-of libvoikko but should be fine for morphological analysis using version 5 (Finnish VFST) dictionaries.<p>
 
 <div style="clear:both;" />
 
